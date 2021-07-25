@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 <!-- Add banner here -->
 ![Banner](img/banner_design.png)
 
-# Indicatore Zona Gialla
+# Indicatore Zona Gialla ☢️
 
 <!-- badges: start -->
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Data-Network-Lab/indicatore_zona_gialla?style=plastic?include_prereleases)
