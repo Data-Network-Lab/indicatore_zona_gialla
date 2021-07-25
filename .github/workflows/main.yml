@@ -4,9 +4,12 @@ name: refresh_data
 #  Controls when the action will run.
 #  “At 08:00 on every day-of-week from Monday through Sunday.”
 #  https://crontab.guru/
+#  On push for testin purpose
 on:
-  schedule:
-    - cron:  '0 8 * * 1-7'
+  push:
+    branches: main
+  # schedule:
+  #   - cron:  '0 8 * * 1-7'
 
 
 jobs: 
@@ -24,19 +27,20 @@ jobs:
       run: |
         R -e 'install.packages("readxl")'
         R -e 'install.packages("dplyr")'
+        R -e 'install.packages("here")'
         
-    # Run R script
+# Run pipeline
     - name: pipeline
-      run: Rscript script.R
+      run: Rscript code.R
 
-#     # Add new files in data folder, commit along with other modified files, push
-#     - name: Commit files
-#       run: |
-#         git config --local user.name github-actions
-#         git config --local user.email "actions@github.com"
-#         git add data/*
-#         git commit -am "GH ACTION Autorun $(date)"
-#         git push origin master
-#       env:
-#         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
-#         username: github-actions
+    # Commit new files
+    - name: Commit files
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add data/*
+        git commit -am "GH ACTION Autorun $(date)"
+        git push origin master
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
