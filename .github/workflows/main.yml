@@ -1,0 +1,42 @@
+# Hourly scraping
+name: refresh_data
+
+#  Controls when the action will run.
+#  “At 08:00 on every day-of-week from Monday through Sunday.”
+#  https://crontab.guru/
+on:
+  schedule:
+    - cron:  '0 8 * * 1-7'
+
+
+jobs: 
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Load repo and install R
+    steps:
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("readxl")'
+        R -e 'install.packages("dplyr")'
+        
+    # Run R script
+    - name: pipeline
+      run: Rscript script.R
+
+#     # Add new files in data folder, commit along with other modified files, push
+#     - name: Commit files
+#       run: |
+#         git config --local user.name github-actions
+#         git config --local user.email "actions@github.com"
+#         git add data/*
+#         git commit -am "GH ACTION Autorun $(date)"
+#         git push origin master
+#       env:
+#         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+#         username: github-actions
