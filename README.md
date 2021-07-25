@@ -8,6 +8,8 @@
 
 <!-- badges: start -->
 
+[![refresh\_data](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml)
+
 ![GitHub release (latest by date including
 pre-releases)](https://img.shields.io/github/v/release/Data-Network-Lab/indicatore_zona_gialla?style=plastic?include_prereleases)
 ![GitHub last

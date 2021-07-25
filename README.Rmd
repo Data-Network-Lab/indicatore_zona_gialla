@@ -17,6 +17,9 @@ knitr::opts_chunk$set(
 # Indicatore Zona Gialla ☢️
 
 <!-- badges: start -->
+
+[![refresh_data](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml)
+
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Data-Network-Lab/indicatore_zona_gialla?style=plastic?include_prereleases)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 ![GitHub issues](https://img.shields.io/github/issues/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
