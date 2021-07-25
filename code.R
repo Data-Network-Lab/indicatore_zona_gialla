@@ -1,6 +1,7 @@
 library(readxl)
 library(dplyr)
 library(here)
+library(writexl)
 
 data <- read_excel(here::here("input_indicatore_22luglio - AGGIORNATO.XLSX"))
 names(data)[1:3] <- c("regione", "popolazione", "vaccinati")
@@ -44,7 +45,7 @@ rischio_zona_gialla <- risultati %>%
   select(regione, vaccinati, incidenza, soglia_50_equivalente, indicatore_soglia_gialla)
 
 
-writexl::write_xlsx(
+write_xlsx(
   list(
     input = input,
     suscettibili = suscettibili,
@@ -53,5 +54,5 @@ writexl::write_xlsx(
     rischio_zona_gialla = rischio_zona_gialla,
     all = risultati
   ),
-  here::here("data", "risultati_20210722_aggiornato.xlsx")
+  here::here("data", paste0("risultati_",Sys.time(),".xlsx"))
 )

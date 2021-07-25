@@ -28,9 +28,10 @@ jobs:
         R -e 'install.packages("readxl")'
         R -e 'install.packages("dplyr")'
         R -e 'install.packages("here")'
+        R -e 'install.packages("writexl")'
         
 # Run pipeline
-    - name: pipeline
+    - name: Run Pipeline
       run: Rscript code.R
 
     # Commit new files
