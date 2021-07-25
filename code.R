@@ -55,20 +55,6 @@ write_xlsx(
     rischio_zona_gialla = rischio_zona_gialla,
     all = risultati
   ),
-  here::here("data", paste0("risultati_",Sys.time(),".xlsx"))
-)
-
-
-
-write_xlsx(
-  list(
-    input = input,
-    suscettibili = suscettibili,
-    soglia_effettiva = soglia_effettiva,
-    soglia_equivalente = soglia_equivalente,
-    rischio_zona_gialla = rischio_zona_gialla,
-    all = risultati
-  ),
   paste0("data/risultati-",Sys.Date(),"-",sample(10,1),".xlsx")
 )
 
