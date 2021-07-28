@@ -25,8 +25,8 @@ jobs:
     # Set-up R
     - name: Install packages
       run: |
-        R -e 'install.packages("readxl")'
-        R -e 'install.packages("dplyr")'
+        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("lubridate")'
         R -e 'install.packages("here")'
         R -e 'install.packages("writexl")'
         
