@@ -1,16 +1,28 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#5d3bff"
+  repo: https://github.com/Data-Network-Lab/indicatore_zona_gialla
+  # includes:
+  #   in_header: [ga_script.html]
 bookdown::gitbook:
-  css: style.css
+  css: css/style.css
+  # includes:
+  #   in_header: [ga_script.html]
   config:
     toc:
+      collapse: section
       before: |
-        <li><a href="./">A Minimal Book Example</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+        <li><a href="./">Project Documentation</a></li>
+    edit: https://github.com/Data-Network-Lab/indicatore_zona_gialla/edit/main/%s
+    download: []
+    sharing:
+      facebook: no
+      twitter: no
+      github: yes
+      all: []
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::epub_book: default
