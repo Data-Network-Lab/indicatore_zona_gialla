@@ -21,7 +21,10 @@ requests](https://img.shields.io/github/issues-pr/Data-Network-Lab/indicatore_zo
 ![GitHub
 license](https://img.shields.io/github/license/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/acef2cd8-681c-43ac-85e2-4df1346cc5cd/deploy-status)](https://app.netlify.com/sites/upbeat-hoover-0a460a/deploys)
 <!-- badges: end -->
+
 <!-- Describe your project in brief -->
 
 # Demo-Preview
