@@ -9,16 +9,18 @@ output_dir: docs
 rmd_files:
   [
     "index.Rmd",
+    
+    "01-datanetwork.Rmd",
 
-    "01-intro.Rmd",
+    "02-contesto.Rmd",
     
-    "02-literature.Rmd",
+    "03-indicatori.Rmd",
     
-    "03-method.Rmd",
+    "04-etlpipeline.Rmd",
     
-    "04-application.Rmd",
+    "05-apis.Rmd",
     
-    "05-summary.Rmd",
+    "06-visualization.Rmd",
     
-    "06-references.Rmd"
+    "07-references.Rmd"
   ]

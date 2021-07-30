@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Data Network | Project Docs</title>
+<meta name="author" content="DataNetwork, Data Engineering team">
+<meta name="generator" content="bookdown 0.22.16 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Data Network | Project Docs">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Data Network | Project Docs">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.9002/transition.js"></script><script src="libs/bs3compat-0.2.5.9002/tabs.js"></script><script src="libs/bs3compat-0.2.5.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><meta name="description" content="1.1 Chi siamo DataNetwork è un’associazione no-profit che connette Data Scientists, Data Analysts, Data Journalists… in tutta Italia. Il retaggio di ciascuno di nostri soci, che sia universitario,...">
+<meta property="og:description" content="1.1 Chi siamo DataNetwork è un’associazione no-profit che connette Data Scientists, Data Analysts, Data Journalists… in tutta Italia. Il retaggio di ciascuno di nostri soci, che sia universitario,...">
+<meta name="twitter:description" content="1.1 Chi siamo DataNetwork è un’associazione no-profit che connette Data Scientists, Data Analysts, Data Journalists… in tutta Italia. Il retaggio di ciascuno di nostri soci, che sia universitario,...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Project Docs</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="active" href="data-network.html"><span class="header-section-number">1</span> Data Network</a></li>
+<li><a class="" href="contesto.html"><span class="header-section-number">2</span> Contesto</a></li>
+<li><a class="" href="indicatore-zona-gialla.html"><span class="header-section-number">3</span> Indicatore Zona Gialla</a></li>
+<li><a class="" href="flusso-dati.html"><span class="header-section-number">4</span> Flusso Dati</a></li>
+<li><a class="" href="final-words.html"><span class="header-section-number">5</span> Final Words</a></li>
+<li><a class="" href="references.html">References</a></li>
+<li><a class="" href="references-1.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/Data-Network-Lab/indicatore_zona_gialla">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-network" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Data Network<a class="anchor" aria-label="anchor" href="#data-network"><i class="fas fa-link"></i></a>
+</h1>
+<div id="chi-siamo" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Chi siamo<a class="anchor" aria-label="anchor" href="#chi-siamo"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color:#5d3bff">DataNetwork</span></strong> è un’associazione <em>no-profit</em> che connette Data Scientists, Data Analysts, Data Journalists… in tutta Italia. Il retaggio di ciascuno di nostri soci, che sia universitario, esperenziale, lavorativo o personale riflette il modello mentale tramite cui questi, in maniera differente, approcciano un medesimo problema. Chi fa parte della community di Data Network, in questo senso, crede che diversi pareri siano meglio di un solo parere e che più un problema è affrontato da diverse angolazioni e meglio è compreso.
+Questi semplici concetti, racchiusi nelle parole di Alfabetizzazione dei dati (Data Literacy) and (Democariazie dei dati) Data Democracy, stanno alla base della piramide dei valori di Data Network e di un mondo che vuole avvantaggiarsi dei dati, non confondersi fra di essi (<a href="https://www.treccani.it/vocabolario/infodemia_%28Neologismi%29/">infodemia</a>).</p>
+<p><a href="https://datanetwork.xyz/">Visita il sito</a> per inviare la candidatura</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="data-network.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2</span><span class="ot"> class=</span><span class="st">"cd-headline loading-bar"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="data-network.html#cb1-2" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb1-3"><a href="data-network.html#cb1-3" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">&lt;span&gt;</span>DATA<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb1-4"><a href="data-network.html#cb1-4" aria-hidden="true" tabindex="-1"></a>                                <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">"cd-words-wrapper is-loading"</span><span class="kw">&gt;</span></span>
+<span id="cb1-5"><a href="data-network.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                                                                <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>SCIENTIST<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-6"><a href="data-network.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>ANALYST<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-7"><a href="data-network.html#cb1-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>ENGINEER<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-8"><a href="data-network.html#cb1-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>JOURNALIST<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-9"><a href="data-network.html#cb1-9" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-visible"</span><span class="kw">&gt;</span>ARCHITECT<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-10"><a href="data-network.html#cb1-10" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>OFFICER<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-11"><a href="data-network.html#cb1-11" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>ARTIST<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-12"><a href="data-network.html#cb1-12" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>EXPERT<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-13"><a href="data-network.html#cb1-13" aria-hidden="true" tabindex="-1"></a>                                            <span class="kw">&lt;b</span><span class="ot"> class=</span><span class="st">"is-hidden"</span><span class="kw">&gt;</span>LOVER<span class="kw">&lt;/b&gt;</span></span>
+<span id="cb1-14"><a href="data-network.html#cb1-14" aria-hidden="true" tabindex="-1"></a>                                    <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb1-15"><a href="data-network.html#cb1-15" aria-hidden="true" tabindex="-1"></a>                             <span class="kw">&lt;/h2&gt;</span></span></code></pre></div>
+<p>Data Network is a no-profit is either to connect different backgrounds Data Scientists in Milan and to spread Data Literacy.
+Backgrounds (whether is educational, working experience or personal) mirror the way people approach a problem, the more they are the better the problem is understood.
+Data Literacy (i.e. transform complex mathematical problems and graph into approachable and familiar guidelines) is crucial, especially in this tough times where the overwhelming amount of data (infodemia) may confuse both the reader and the analyst.
+DN combines all of that by organizing data-themed events and offering technical and non technical corner talks held by a plenty of Junior and Senior scientists in front of anyone interested.
+Moreover the association has partnered with many different stakeholders, ranging from start-ups, telco, IT services, management consulting firms and other major corporate connections. It has also pushed teams into Hackatons and conferences within Italy.</p>
+</div>
+<div id="cosa-facciamo" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Cosa facciamo<a class="anchor" aria-label="anchor" href="#cosa-facciamo"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong><span style="color:#5d3bff">DN</span></strong> nella sua parte promozionale organizza eventi a tema “dati” nell’area di Milano e presto in remoto offrendo corner talks di esperti e figure più Junior provenienti da ogni settore. Data Network può essere anche il luogo di presentazione della propria start-up, adatto alla ricerca di collaboratori esterni e consigli da esperti già operanti nella area strategica d’affari.
+Data Network vanta collaborazioni con una multitudine di Stakeholders provenienti da varie industrie: dalle telecomunicazioni, ai servizi di streaming, a forti connessioni con società di management consulting, per arrivare a giganti corporate.
+La comunità proattiva di data network è sempre pronta a nuove sfide e recentemente è stato composto un team per partecipare ad Hackatons e competizioni a tema codice e dati.</p>
+</div>
+<div id="data-network-match" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> <strong><span style="color:#5d3bff">Data Network</span></strong> match<a class="anchor" aria-label="anchor" href="#data-network-match"><i class="fas fa-link"></i></a>
+</h2>
+<p>Una funzione esclusiva a cui i soci hanno accesso è il Data Network Match. DN match è uno strumento di ricerca semplice e intuitivo tramite il quale studenti, professionisti e aziende potranno contattare e ricercare i profili più in linea con le proprie esigenze. Non è mai stato così semplice trovare professionalità di valore e data literate per un nuovo progetto. Alcuni altri scopi:</p>
+<ul>
+<li>le esperienze vengono condivise</li>
+<li>la ricerca di un collaboratore per progetti interni o esterni sia facile e veloce</li>
+<li>il contatto diretto con stakeholders delle realtà partners di DN</li>
+</ul>
+</div>
+<div id="un-po-di-storia-recente" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Un po’ di storia recente<a class="anchor" aria-label="anchor" href="#un-po-di-storia-recente"><i class="fas fa-link"></i></a>
+</h2>
+<p>…</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Welcome</a></div>
+<div class="next"><a href="contesto.html"><span class="header-section-number">2</span> Contesto</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-network"><span class="header-section-number">1</span> Data Network</a></li>
+<li><a class="nav-link" href="#chi-siamo"><span class="header-section-number">1.1</span> Chi siamo</a></li>
+<li><a class="nav-link" href="#cosa-facciamo"><span class="header-section-number">1.2</span> Cosa facciamo</a></li>
+<li><a class="nav-link" href="#data-network-match"><span class="header-section-number">1.3</span> Data Network match</a></li>
+<li><a class="nav-link" href="#un-po-di-storia-recente"><span class="header-section-number">1.4</span> Un po’ di storia recente</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/Data-Network-Lab/indicatore_zona_gialla/blob/master/01-datanetwork.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/Data-Network-Lab/indicatore_zona_gialla/edit/master/01-datanetwork.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Project Docs</strong>" was written by DataNetwork, Data Engineering team. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

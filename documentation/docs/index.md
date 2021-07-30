@@ -1,6 +1,6 @@
 --- 
 title: "Project Docs"
-author: "DataNe, Data Engineer"
+author: "DataNetwork, Data Engineering team"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -11,7 +11,14 @@ link-citations: yes
 # Welcome {.unnumbered}
 
 
-<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-07-29. 
+<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_. La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-07-30. 
+
+
+Tra gli obiettivi a lungo termine del progetto condiviso, oltre al continuo aggiornamento dell’indicatore oggetto del progetto, sono previsti l’ottimizzazione del flusso dei dati al fine di automatizzare la creazione del report e di una dashboard online aggiornata in tempo reale. Nello specifico, la presente proposta prevede la creazione e la predisposizione di una soluzione pilota per il calcolo dell’Indice di stress del Sistema Sanitario, rispetto ad un perimetro circoscritto di indicatori qui riassunte nei seguenti steps:
+
+- rielaborazione statistica ed analisi degli indicatori
+- creazione, automazione e ottimizzazione del flusso dati
+- sviluppo ed integrazione di una soluzione di front-end per data visualization (dashboard).
 
 
 
