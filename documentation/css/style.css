@@ -1,4 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
+ /*------------- Body and header text---------------- */
+
+.book.font-family-1 {
+  font-family: 'Lato', sans-serif;
+ }
+ 
+ 
+ h1, h2, h3, h4 {
+  font-family: 'Raleway', serif;
+  color: #2f5275;
+}
+
+
+.title {
+  font-family: 'Raleway', serif;
+  font-size: 3em !important;
+  color: #5699cc;
+ }
+
+.subtitle {
+  font-family: 'Raleway', serif;
+  color: #2c6793;
+}
+
+
+ 
+/*------------- Add style for active links---------------- */
+
+.book .book-summary ul.summary li.active>a { /*active TOC links*/
+  color: #778ca5 !important;
+  border-left: solid 4px;
+  border-color: #5699cc;
+  padding-left: 11px !important;
+}  
+
+
+.summary a:hover {
+  color: #778ca5 !important;
+} 
+
+
+/*------------- start hadley's----------------
+
+
+
 p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+
+div.sidebar {
+  border-left: 7px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+}
+
+
+
+.book .book-body .page-wrapper .page-inner section.normal div.sidebar > :first-child {
+  margin-top: 0;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal div.sidebar > :last-child {
+  margin-bottom: 0;
+}
+
+------------ end hadley's---------------- */
+
+
+/*------------- start Sidebar formatting---------------- */
+
+div.sidebar {
+  border-left: 7px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+}
+
+/*------------- end   Sidebar formatting---------------- */
+
+
+padding: ;.caption {
   color: #777;
   margin-top: 10px;
 }
@@ -22,6 +117,7 @@ blockquote > p:last-child {
 blockquote > p:first-child {
   text-align: inherit;
 }
+
 
 /* Callouts */
 .callout {
