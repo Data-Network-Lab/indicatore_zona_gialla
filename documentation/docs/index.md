@@ -1,18 +1,17 @@
 --- 
 title: "Project Docs"
-author: "Niccolò Salvini, Data Engineer"
+author: "DataNe, Data Engineer"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Welcome 
+# Welcome {.unnumbered}
 
 
-
+<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-07-29. 
 
 
 

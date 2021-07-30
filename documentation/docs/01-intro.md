@@ -52,4 +52,15 @@ Table: (\#tab:nice-tab)Here is a nice table!
 |          5.7|         3.8|          1.7|         0.3|setosa  |
 |          5.1|         3.8|          1.5|         0.3|setosa  |
 
+
+
+:::warningblock
+Only the **body** content is **displayed** on the screen! W3C [validation](https://validator.w3.org/#validate_by_input) imposes at least a `title` tag in the `head` section and a `lang` attribute to the `html` tag!
+:::
+
+::: {.noteblock}
+As of `{htmltools}` 0.5.2, there is a new `tagInsertChildren` [function](https://rstudio.github.io/htmltools/reference/tagAppendChild.html). 
+:::
+
+
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
