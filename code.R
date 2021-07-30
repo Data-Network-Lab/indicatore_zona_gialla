@@ -281,8 +281,61 @@ mutate(
   mutate_if(is.numeric, round, digits = 2)
 
 
+output_nicco # by week
+output_vinc  # by day
 
-output_vinc
+
+# VISUALIZZAZIONI ----
+
+##  Tabella Semplice ----
+tabella_semplice = function(start = today(), end = today()-7) {
+  
+  rtn_tbl <- output_nicco %>% 
+    filter_by_time(.data = start, .start_date = start, .end_date = end)
+  
+  return(rtn_tbl)
+                   
+}
+
+
+## Mappa ----
+
+mappa = function(date_var, start = NULL, end = NULL) {
+  
+  start = today()
+  end   = today() -7
+  
+  rtn_tbl <- output_nicco %>% 
+    filter_by_time(.data = start, .start_date = start, .end_date = end) %>% 
+    select(denominazione_regione, indicatore_stress)
+  
+  return(rtn_tbl)
+  
+}
+
+
+## scatterplot ----
+
+scatterplot = function(date_var, start = NULL, end = NULL) {
+  
+  start = today()
+  end   = today() -7
+  
+  rtn_tbl <- output_nicco %>% 
+    filter_by_time(.data = start, .start_date = start, .end_date = end) %>% 
+    select(denominazione_regione, indicatore_stress)
+    
+  return(rtn_tbl)
+  
+}
+
+
+  
+
+
+
+
+# -.-.-.-.-.- Write ops -.-.-.-.-.-  # 
 
 
 #
