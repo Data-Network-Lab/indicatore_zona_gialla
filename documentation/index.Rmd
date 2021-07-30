@@ -1,16 +1,25 @@
 --- 
 title: "Project Docs"
-author: "Niccolò Salvini, Data Engineer"
+author: "DataNetwork, Data Engineering team"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Welcome 
+# Welcome {.unnumbered}
 
+
+<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è `r today()`. 
+
+
+La documentazione si oritenta a presentare gli obiettivi a lungo termine del progetto condiviso, oltre al continuo aggiornamento
+dell’indicatore 3.13 sono previsti l’ottimizzazione del flusso dei dati al fine di automatizzare la
+creazione del report e di una dashboard online aggiornata in tempo reale. Nello specifico, la
+presente proposta prevede la creazione e la predisposizione di una soluzione pilota per il
+calcolo dell’Indice di stress del Sistema Sanitario, rispetto ad un perimetro circoscritto di
+indicatori (3.1 e 3.13 Cfr. Instant Report Altems) ed articolata nei seguenti step:
 
 
 
