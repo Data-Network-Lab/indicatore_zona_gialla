@@ -6,7 +6,7 @@ library(lubridate)
 library(slider)
 library(timetk) ## questioning
 library(here)
-
+library(tidyr)
 
 # 1.0 urls, static files and params  ----
 url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
@@ -39,7 +39,7 @@ incidenza_prepped <- read_csv(url_incidenza, show_col_types = FALSE) %>%
     data = ymd(data)
   )
 
-inciddenza_per_settimana <- incidenza_prepped %>%
+incidenza_per_settimana <- incidenza_prepped %>%
   group_by(denominazione_regione) %>%
   mutate(
     totale_casi_lag = lag(totale_casi, n = delta),
@@ -77,9 +77,9 @@ vaccini_per_settimana <- vaccini_prepped %>%
 
 # 5 output ----
 
-output <- inciddenza_per_settimana %>%
+pre_output <- incidenza_per_settimana %>%
   left_join(static_data) %>%
-  left_join(vaccini_per_settimana) %>%
+  left_join(vaccini_per_settimana) %>% 
   mutate(
     incidenza = incremento / (popolazione / 100000),
     saturazione_ti = terapia_intensiva / PL_terapia_intensiva,
@@ -100,26 +100,22 @@ output <- inciddenza_per_settimana %>%
     soglia_150_equivalente = round(150 * moltiplicatore_vaccini, 0),
     soglia_250_equivalente = round(250 * moltiplicatore_vaccini, 0),
     indicatore_stress = (incidenza) / soglia_50_equivalente
-  ) %>%
-  mutate_if(is.numeric, round, digits = 2)
+  ) %>%  
+  mutate(across(where(is.numeric), round, digits = 2))
+  
+## TODO add_totals per week
+# output <- pre_output %>%  
+#   bind_rows(
+#     pre_output %>%
+#       group_by(data) %>%
+#       summarise(across(where(is.numeric), ~ sum(.x, na.rm = TRUE))) %>%
+#       mutate("cyl" = "Total")
+#   )
 
 
 
-
-#
-#
-# write_xlsx(
-#   list(
-#     input = input,
-#       suscettibili = suscettibili,
-#     soglia_effettiva = soglia_effettiva,
-#     soglia_equivalente = soglia_equivalente,
-#     rischio_zona_gialla = rischio_zona_gialla,
-#     all = risultati
-#   ),
-#   paste0("data/risultati-",Sys.Date(),"-",sample(10,1),".xlsx")
-# )
-#
+write_xlsx(x = pre_output, 
+           path = here("data", "indicatore_stress.xlsx"))
 
 
 
@@ -127,8 +123,62 @@ output <- inciddenza_per_settimana %>%
 
 
 ## 6.1 tabella semplice
-## 6.2 mappa
+pre_output %>%
+  filter(between(data, left = today()-1, right = today()-1)) %>% 
+  write_xlsx(
+             path = here("data","graph-data", "tabella_semplice.xlsx")
+             )
+
+## 6.2 mappa 
+pre_output %>% 
+  select(denominazione_regione, indicatore_stress) %>% 
+  write_xlsx(
+    path = here("data","graph-data", "mappa.xlsx")
+  )
+  
+
 ## 6.3 scatterplot
-## 6.4 Range Plot
+pre_output %>%  
+  select(denominazione_regione,
+         indicatore_stress,
+         incidenza) %>% 
+  write_xlsx(
+    path = here("data","graph-data", "scatterplot.xlsx")
+  )
+
+## 6.4 Arrow Plot
+indicatore_t <- pre_output %>%  
+  select(data, denominazione_regione, indicatore_stress_t =indicatore_stress ) %>% 
+  tail(21) 
+  
+indicatore_t1 <- pre_output %>% 
+  select(data, denominazione_regione, indicatore_stress_t1 = indicatore_stress) %>% 
+  tail(42) %>% 
+  head(21) 
+
+bind_cols(indicatore_t, indicatore_t1)
+  write_xlsx(
+    path = here("data","graph-data", "arrow_plot.xlsx")
+  )
+
 ## 6.5 Time series (settimanale)
+
 ## 6.6 Time series (giornaliero)
+
+pre_output %>% 
+  select(data,denominazione_regione, indicatore_stress) %>% 
+  tail(21* 10) %>% 
+  group_by(data) %>% 
+  pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  indicatore_stress) %>% 
+  write_xlsx(
+    path = here("data","graph-data", "variazione_giornaliera.xlsx")
+  )
+
+
+
+
+
+
+
+
+
