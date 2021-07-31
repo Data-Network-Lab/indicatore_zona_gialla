@@ -28,6 +28,7 @@
 #         R -e 'install.packages("dplyr")'
 #         R -e 'install.packages("stringr")'
 #         R -e 'install.packages("readr")'
+#         R -e 'install.packages("readxl")'
 #         R -e 'install.packages("slider")'
 #         R -e 'install.packages("writexl")'
 #         R -e 'install.packages("lubridate")'
