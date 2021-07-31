@@ -7,31 +7,58 @@ library(slider)
 library(timetk) ## questioning
 library(here)
 
+## 0 utils ----
+## slider settimanale per incidenza
+slider_incidenza <- function(data) {
+  group_by(data, denominazione_regione) %>%
+    summarise(
+      start = min(data),
+      end = max(data),
+      totale_casi_da_inizio = last(totale_casi),
+      terapia_intensiva = sum(terapia_intensiva),
+      ricoverati_con_sintomi = sum(ricoverati_con_sintomi)
+    )
+}
 
-# 1.0 urls, static files and params  ----
+## slider settimanale per vaccini
+slider_vaccini <- function(data) {
+  group_by(data, denominazione_regione) %>%
+    summarise(start = min(data), end = max(data), nuovi_vaccinati = sum(totale))
+}
+
+
+
+# 1.0 urls & params  ----
 url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
 url_dati_rif <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv"
 url_vaccini <- "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
+
+
+# 2 dati prepped (4 months ago)  ----
+## 2.1 dati relativi a popolazione per ogni regione ----
+dati_statistici_riferimento <- read_csv(url_dati_rif, show_col_types = FALSE) %>%
+  count(denominazione_regione,
+        wt = totale_generale,
+        name = "popolazione_totale",
+        sort = T
+  )
+
+## 2.2 static data ----
 static_data <- read_excel(here("data", "data-raw", "static_data.xlsx"))
 
 
-delta <- 7
-efficacia <- 0.95
-
-
-
-# 2.0 dati prepped (4 months ago)  ----
-# dati relativi a popolazione per ogni regione
-dati_statistici_riferimento <- read_csv(url_dati_rif, show_col_types = FALSE) %>%
-  count(denominazione_regione,
-    wt = totale_generale,
-    name = "popolazione_totale",
-    sort = T
-  )
-
-
-
 # 3 Incidenza ----
+## Can control how many weeks with argument .before
+#
+#   .before: How many elements before the current one should be included in the window?
+#
+#   .after: How many elements after the current one should be included in the window?
+#
+#   .complete: Should .f only be evaluated when there is enough data to make a complete window?
+#
+#   .step: The number of elements to shift forward between calls to .f.
+#
+
 incidenza_prepped <- read_csv(url_incidenza, show_col_types = FALSE) %>%
   select(data, denominazione_regione, totale_casi, terapia_intensiva, ricoverati_con_sintomi) %>%
   mutate(
@@ -39,11 +66,17 @@ incidenza_prepped <- read_csv(url_incidenza, show_col_types = FALSE) %>%
     data = ymd(data)
   )
 
-inciddenza_per_settimana <- incidenza_prepped %>%
+
+incidenza_per_settimana <- incidenza_prepped %>%
+  slide_period_dfr(
+    incidenza_prepped$data,
+    "week",
+    slider_incidenza
+  ) %>%
   group_by(denominazione_regione) %>%
   mutate(
-    totale_casi_lag = lag(totale_casi, n = delta),
-    incremento = totale_casi - totale_casi_lag
+    totale_casi_lag = lag(totale_casi_da_inizio, n = 1),
+    incremento = totale_casi_da_inizio - totale_casi_lag
   ) %>%
   ungroup()
 
@@ -68,16 +101,21 @@ vaccini_prepped <- read_csv(url_vaccini, show_col_types = FALSE) %>%
     TRUE ~ seconda_dose + pregressa_infezione
   ))
 
+
+
 vaccini_per_settimana <- vaccini_prepped %>%
-  group_by(data, denominazione_regione) %>%
-  summarise(nuovi_vaccinati = sum(totale)) %>%
+  slider::slide_period_dfr(
+    vaccini_prepped$data,
+    "week",
+    week_summary_vacc
+  ) %>%
   group_by(denominazione_regione) %>%
   mutate(vaccinati = cumsum(nuovi_vaccinati))
 
 
-# 5 output ----
 
-output <- inciddenza_per_settimana %>%
+# 5 output -----
+output <- incidenza_per_settimana %>%
   left_join(static_data) %>%
   left_join(vaccini_per_settimana) %>%
   mutate(
@@ -103,32 +141,3 @@ output <- inciddenza_per_settimana %>%
   ) %>%
   mutate_if(is.numeric, round, digits = 2)
 
-
-
-
-#
-#
-# write_xlsx(
-#   list(
-#     input = input,
-#       suscettibili = suscettibili,
-#     soglia_effettiva = soglia_effettiva,
-#     soglia_equivalente = soglia_equivalente,
-#     rischio_zona_gialla = rischio_zona_gialla,
-#     all = risultati
-#   ),
-#   paste0("data/risultati-",Sys.Date(),"-",sample(10,1),".xlsx")
-# )
-#
-
-
-
-# 6 Visualization Data ----
-
-
-## 6.1 tabella semplice
-## 6.2 mappa
-## 6.3 scatterplot
-## 6.4 Range Plot
-## 6.5 Time series (settimanale)
-## 6.6 Time series (giornaliero)
