@@ -151,11 +151,11 @@ indicatore_t <- pre_output %>%
   tail(21) 
   
 indicatore_t1 <- pre_output %>% 
-  select(data, denominazione_regione, indicatore_stress_t1 = indicatore_stress) %>% 
+  select(indicatore_stress_t1 = indicatore_stress) %>% 
   tail(42) %>% 
   head(21) 
 
-bind_cols(indicatore_t, indicatore_t1)
+bind_cols(indicatore_t, indicatore_t1) %>% 
   write_xlsx(
     path = here("data","graph-data", "arrow_plot.xlsx")
   )
