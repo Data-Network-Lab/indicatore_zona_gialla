@@ -2,7 +2,6 @@ library(dplyr)
 library(stringr)
 library(readr)
 library(readxl)
-library(writexl)
 library(lubridate)
 library(here)
 library(tidyr)
@@ -113,8 +112,9 @@ pre_output <- incidenza_per_settimana %>%
 
 
 
-write_xlsx(x = pre_output, 
-           path = here("data", "indicatore_stress.xlsx"))
+write_csv(x = pre_output,
+          path = here("data", "indicatore_stress.csv"), 
+          append = TRUE)
 
 
 
@@ -124,15 +124,17 @@ write_xlsx(x = pre_output,
 ## 6.1 tabella semplice
 pre_output %>%
   filter(between(data, left = today()-1, right = today()-1)) %>% 
-  write_xlsx(
-             path = here("data","graph-data", "tabella_semplice.xlsx")
+  write_csv(
+             path = here("data","graph-data", "tabella_semplice.csv"),
+             append = TRUE
              )
 
 ## 6.2 mappa 
 pre_output %>% 
   select(denominazione_regione, indicatore_stress) %>% 
-  write_xlsx(
-    path = here("data","graph-data", "mappa.xlsx")
+  write_csv(
+    path = here("data","graph-data", "mappa.xlsx"), 
+    append = TRUE
   )
   
 
@@ -141,8 +143,9 @@ pre_output %>%
   select(denominazione_regione,
          indicatore_stress,
          incidenza) %>% 
-  write_xlsx(
-    path = here("data","graph-data", "scatterplot.xlsx")
+  write_csv(
+    path = here("data","graph-data", "scatterplot.xlsx"),
+    append = TRUE
   )
 
 ## 6.4 Arrow Plot
@@ -156,8 +159,9 @@ indicatore_t1 <- pre_output %>%
   head(21) 
 
 bind_cols(indicatore_t, indicatore_t1) %>% 
-  write_xlsx(
-    path = here("data","graph-data", "arrow_plot.xlsx")
+  write_csv(
+    path = here("data","graph-data", "arrow_plot.xlsx"),
+    append = TRUE
   )
 
 ## 6.5 Time series (settimanale)
@@ -169,10 +173,11 @@ pre_output %>%
   tail(21* 10) %>% 
   group_by(data) %>% 
   pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  indicatore_stress) %>% 
-  write_xlsx(
-    path = here("data","graph-data", "variazione_giornaliera.xlsx")
+  write_csv(
+    path = here("data","graph-data", "variazione_giornaliera.xlsx"),
+    append = TRUE
+    
   )
-
 
 
 
