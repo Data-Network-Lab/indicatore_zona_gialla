@@ -4,8 +4,6 @@ name: refresh_data
 #  Controls when the action will run.
 #  “every 3 hours”
 #  https://crontab.guru/
-#  On push for testin purpose
-name: "Repeat every 3 hours"
 on:
   schedule:
     - cron:  '0 */3 * * * '
