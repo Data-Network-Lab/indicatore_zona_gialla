@@ -133,7 +133,7 @@ pre_output %>%
 pre_output %>% 
   select(denominazione_regione, indicatore_stress) %>% 
   write_csv(
-    path = here("data","graph-data", "mappa.xlsx"), 
+    path = here("data","graph-data", "mappa.csv"), 
     append = TRUE
   )
   
@@ -144,7 +144,7 @@ pre_output %>%
          indicatore_stress,
          incidenza) %>% 
   write_csv(
-    path = here("data","graph-data", "scatterplot.xlsx"),
+    path = here("data","graph-data", "scatterplot.csv"),
     append = TRUE
   )
 
@@ -160,7 +160,7 @@ indicatore_t1 <- pre_output %>%
 
 bind_cols(indicatore_t, indicatore_t1) %>% 
   write_csv(
-    path = here("data","graph-data", "arrow_plot.xlsx"),
+    path = here("data","graph-data", "arrow_plot.csv"),
     append = TRUE
   )
 
@@ -174,7 +174,7 @@ pre_output %>%
   group_by(data) %>% 
   pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  indicatore_stress) %>% 
   write_csv(
-    path = here("data","graph-data", "variazione_giornaliera.xlsx"),
+    path = here("data","graph-data", "variazione_giornaliera.csv"),
     append = TRUE
     
   )
