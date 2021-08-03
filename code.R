@@ -98,9 +98,10 @@ pre_output <- incidenza_per_settimana %>%
     soglia_150_equivalente = round(150 * moltiplicatore_vaccini, 0),
     soglia_250_equivalente = round(250 * moltiplicatore_vaccini, 0),
     indicatore_stress = (incidenza) / soglia_50_equivalente
-  ) %>%  
+  ) %>%
   mutate(across(where(is.numeric), round, digits = 2))
-  
+
+
 ## TODO add_totals per week
 # output <- pre_output %>%  
 #   bind_rows(
@@ -175,12 +176,14 @@ pre_output %>%
   drop_na() %>% 
   pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  media_indicatore_stress) %>% 
   mutate(across(where(is.numeric), round, digits = 2)) %>% 
+  ungroup() %>% 
+  filter(row_number() < n())
+  
   write_csv(
     file = here("data","graph-data", "variazione_settimanale.csv"),
     append = TRUE
-    
-  )
-
+  )  
+  
 
 ## 6.6 Time series (giornaliero)
 
