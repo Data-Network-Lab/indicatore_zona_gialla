@@ -113,7 +113,7 @@ pre_output <- incidenza_per_settimana %>%
 
 
 write_csv(x = pre_output,
-          path = here("data", "indicatore_stress.csv"), 
+          file = here("data", "indicatore_stress.csv"), 
           append = TRUE)
 
 
@@ -125,7 +125,7 @@ write_csv(x = pre_output,
 pre_output %>%
   filter(between(data, left = today()-1, right = today()-1)) %>% 
   write_csv(
-             path = here("data","graph-data", "tabella_semplice.csv"),
+             file = here("data","graph-data", "tabella_semplice.csv"),
              append = TRUE
              )
 
@@ -133,7 +133,7 @@ pre_output %>%
 pre_output %>% 
   select(denominazione_regione, indicatore_stress) %>% 
   write_csv(
-    path = here("data","graph-data", "mappa.csv"), 
+    file = here("data","graph-data", "mappa.csv"), 
     append = TRUE
   )
   
@@ -144,7 +144,7 @@ pre_output %>%
          indicatore_stress,
          incidenza) %>% 
   write_csv(
-    path = here("data","graph-data", "scatterplot.csv"),
+    file = here("data","graph-data", "scatterplot.csv"),
     append = TRUE
   )
 
@@ -160,21 +160,39 @@ indicatore_t1 <- pre_output %>%
 
 bind_cols(indicatore_t, indicatore_t1) %>% 
   write_csv(
-    path = here("data","graph-data", "arrow_plot.csv"),
+    file = here("data","graph-data", "arrow_plot.csv"),
     append = TRUE
   )
 
 ## 6.5 Time series (settimanale)
 
+pre_output %>% 
+  select(data,denominazione_regione, indicatore_stress) %>% 
+  mutate(week = week(data)) %>% 
+  filter(between(data, left = ymd("2021-01-01"), right =today())) %>%
+  group_by(week, denominazione_regione) %>%  
+  summarise(media_indicatore_stress = mean(indicatore_stress))  %>% 
+  drop_na() %>% 
+  pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  media_indicatore_stress) %>% 
+  mutate(across(where(is.numeric), round, digits = 2)) %>% 
+  write_csv(
+    file = here("data","graph-data", "variazione_settimanale.csv"),
+    append = TRUE
+    
+  )
+
+
 ## 6.6 Time series (giornaliero)
+
+last_days = 10
 
 pre_output %>% 
   select(data,denominazione_regione, indicatore_stress) %>% 
-  tail(21* 10) %>% 
+  tail(21* last_days) %>% 
   group_by(data) %>% 
   pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  indicatore_stress) %>% 
   write_csv(
-    path = here("data","graph-data", "variazione_giornaliera.csv"),
+    file = here("data","graph-data", "variazione_giornaliera.csv"),
     append = TRUE
     
   )
