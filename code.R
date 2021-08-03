@@ -177,8 +177,7 @@ pre_output %>%
   pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from =  media_indicatore_stress) %>% 
   mutate(across(where(is.numeric), round, digits = 2)) %>% 
   ungroup() %>% 
-  filter(row_number() < n())
-  
+  filter(row_number() < n()) %>% 
   write_csv(
     file = here("data","graph-data", "variazione_settimanale.csv"),
     append = TRUE
