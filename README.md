@@ -4,8 +4,6 @@
 
 ![Banner](img/banner_design.png)
 
-# Indicatore Zona Gialla ☢️
-
 <!-- badges: start -->
 
 [![refresh\_data](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml)
@@ -16,36 +14,60 @@ pre-releases)](https://img.shields.io/github/v/release/Data-Network-Lab/indicato
 commit](https://img.shields.io/github/last-commit/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 ![GitHub
 issues](https://img.shields.io/github/issues/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
-![GitHub pull
-requests](https://img.shields.io/github/issues-pr/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
+[![GitHub
+forks](https://img.shields.io/github/forks/Data-Network-Lab/indicatore_zona_gialla)](https://github.com/Data-Network-Lab/indicatore_zona_gialla/network)
 ![GitHub
 license](https://img.shields.io/github/license/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 
 <!-- badges: end -->
 <!-- Describe your project in brief -->
 
-# Demo-Preview
+## Description
+
+The project is articulated into 3 parts:
+
+-   set new KPI
+-   **etl** pipeline
+-   data visualizations & frontend
+
+the new KPI will be measuring the overall *stress* of our SSN (Servizio
+Sanitario Nazionale) which is the results of a combination of the
+**vaccination** and hospital **saturation** effects according to most
+recent orders (D.L. 52/2021). This presumably will help to readjust the
+thresholds set prior the vaccination campaign and ultimately might give
+an updated perspective of the actual and future situation.
+
+then the **etl pipeline** joins and cleans up data from these 3 sources:
+
+-   [pcm-dpc, dati
+    regioni](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv)
+-   [pcm-dpc, dati statistici di
+    riferimento](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv)
+-   [COVID 19 open data vaccini, somministrazioni
+    vaccini](https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv)
+
+![etl pipeline](img/etl_diagram.png)
+
+In the end visualization (maps, barcharts & arrowplots) are made with
+[Datawrapper](https://www.datawrapper.de/) and nested within a simple
+frontend:
+
+![visualization](img/vsiual_diagram.png)
+
+## Demo-Preview
 
 <!-- Add a demo for your project -->
+in progres…
+<p align="center">
+<img width="100" height="100" src="img/loading.gif">
+</p>
 
-After you have written about your project, it is a good idea to have a
-demo/preview(**video/gif/screenshots** are good options) of your project
-so that people can know what to expect in your project. You could also
-add the demo in the previous section with the product description.
+## Table of contents
 
-Here is a random GIF as a placeholder.
-
-![Random GIF](https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif)
-
-# Table of contents
-
-After you have introduced your project, it is a good idea to add a
-**Table of contents** or **TOC** as **cool** people say it. This would
-make it easier for people to navigate through your README and find
-exactly what they are looking for.
-
-Here is a sample TOC(*wow! such cool!*) that is actually the TOC for
-this README.
+Here there is a brief overview about the project, a more indeep
+explanation of resuls and methodologies is offered in the [project
+documentation](https://altems-documentation.netlify.app/) (under
+maintenance)
 
 -   [Project Title](#project-title)
 -   [Demo-Preview](#demo-preview)
@@ -53,7 +75,7 @@ this README.
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Development](#development)
--   [Contribute](#contribute)
+-   [Contribute and Conduct](#contribute-and-conduct)
     -   [Sponsor](#sponsor)
     -   [Adding new features or fixing
         bugs](#adding-new-features-or-fixing-bugs)
@@ -65,109 +87,40 @@ this README.
 [(Back to top)](#table-of-contents)
 
 *You might have noticed the **Back to top** button(if not, please
-notice, it’s right there!). This is a good idea because it makes your
-README **easy to navigate.***
-
-The first one should be how to install(how to generally use your project
-or set-up for editing in their machine).
-
-This should give the users a concrete idea with instructions on how they
-can use your project repo with all the steps.
-
-Following this steps, **they should be able to run this in their
-device.**
-
-A method I use is after completing the README, I go through the
-instructions from scratch and check if it is working.
-
-Here is a sample instruction:
-
-To use this project, first clone the repo on your device using the
-command below:
+notice, it’s right there above!). This is a good idea because it makes
+this README **easy to navigate.*** If you are willing to install this
+project on your machine the recommendend choice is to git pull it from
+github:
 
 `git init`
 
 `git clone https://github.com/navendu-pottekkat/nsfw-filter.git`
 
-# Usage
+## Usage
 
 [(Back to top)](#table-of-contents)
 
-This is optional and it is used to give the user info on how to use the
-project after installation. This could be added in the Installation
-section also.
+The whole repository data as well as cleaning process can be utilized
+under the license prescription.
 
-# Development
-
-[(Back to top)](#table-of-contents)
-
-This is the place where you give instructions to developers on how to
-modify the code.
-
-You could give **instructions in depth** of **how the code works** and
-how everything is put together.
-
-You could also give specific instructions to how they can setup their
-development environment.
-
-Ideally, you should keep the README simple. If you need to add more
-complex explanations, use a wiki. Check out [this
-wiki](https://github.com/navendu-pottekkat/nsfw-filter/wiki) for
-inspiration.
-
-# Contribute
+## Contribute and Conduct
 
 [(Back to top)](#table-of-contents)
-
-This is where you can let people know how they can **contribute** to
-your project. Some of the ways are given below.
-
-Also this shows how you can add subsections within a section.
-
-### Sponsor
-
-[(Back to top)](#table-of-contents)
-
-Your project is gaining traction and it is being used by thousands of
-people(***with this README there will be even more***). Now it would be
-a good time to look for people or organisations to sponsor your project.
-This could be because you are not generating any revenue from your
-project and you require money for keeping the project alive.
-
-You could add how people can sponsor your project in this section. Add
-your patreon or GitHub sponsor link here for easy access.
-
-A good idea is to also display the sponsors with their organisation
-logos or badges to show them your love!(*Someday I will get a sponsor
-and I can show my love*)
-
-### Adding new features or fixing bugs
-
-[(Back to top)](#table-of-contents)
-
-This is to give people an idea how they can raise issues or feature
-requests in your projects.
-
-You could also give guidelines for submitting and issue or a pull
-request to your project.
-
-Personally and by standard, you should use a [issue
-template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/ISSUE_TEMPLATE.md)
-and a [pull request
-template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/PULL_REQ_TEMPLATE.md)(click
-for examples) so that when a user opens a new issue they could easily
-format it as per your project guidelines.
-
-You could also add contact details for people to get in touch with you
-regarding your project.
-
-## Code of Conduct
 
 Please note that the indicatore\_zona\_gialla project is released with a
 [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
+## Sponsor
+
+[(Back to top)](#table-of-contents)
+
+The project sponsor is **ALTEMS** but if your are planning to support
+our work as well feel free to tap the button and donate. If you are
+interested to be contacted for future works or collaboration please feel
+free too to PM us @ <datanetworkxyz@gmail.com>
+
 <!-- Add the footer here -->
 
-![Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png)
+![Footer](img/footer.png)
