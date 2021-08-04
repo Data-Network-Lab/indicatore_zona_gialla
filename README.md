@@ -94,7 +94,23 @@ github:
 
 `git init`
 
-`git clone https://github.com/navendu-pottekkat/nsfw-filter.git`
+`git clone https://github.com/Data-Network-Lab/indicatore_zona_gialla.git`
+
+Then once you have copied this repo on your computer execute:
+
+``` r
+if(!require(renv)){
+    install.packages("renv")
+}
+
+renv::restore()
+```
+
+**Author Disclaimer**: `renv` is *not* a panacea for reproducibility, as
+many people believe. Reproducible projects can be made easier with this
+tool, which records the versions of R + R packages being used in a
+project and provides tools for reinstalling those packages in a project
+to their declared versions.
 
 ## Usage
 
