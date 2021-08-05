@@ -15,6 +15,8 @@ library(httr)
 
 
 
+
+
 check_url_status <- function(href) {
   log_info("Checking ", href, "...\n")
   tryCatch(
