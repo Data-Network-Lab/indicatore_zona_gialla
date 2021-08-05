@@ -1,48 +1,35 @@
 # Data Network
 
+Be aware that this documentation ics currently under development, the vast majority of the parts need a review.
+
 ## Chi siamo
 
 **<span style="color:#5d3bff">DataNetwork</span>** è un'associazione _no-profit_ che connette Data Scientists, Data Analysts, Data Journalists... in tutta Italia. Il retaggio di ciascuno di nostri soci, che sia universitario, esperenziale, lavorativo o personale riflette il modello mentale tramite cui questi, in maniera differente, approcciano un medesimo problema. Chi fa parte della community di Data Network, in questo senso, crede che diversi pareri siano meglio di un solo parere e che più un problema è affrontato da diverse angolazioni e meglio è compreso.
 Questi semplici concetti, racchiusi nelle parole di Alfabetizzazione dei dati (Data Literacy) and (Democariazie dei dati) Data Democracy, stanno alla base della piramide dei valori di Data Network e di un mondo che vuole avvantaggiarsi dei dati, non confondersi fra di essi ([infodemia](https://www.treccani.it/vocabolario/infodemia_%28Neologismi%29/)).
 
+![Data Network team](images/dn_team.png)
+
 
 [Visita il sito](https://datanetwork.xyz/) per inviare la candidatura 
 
+<!-- <div class="ml11"> -->
+<!--   <h2> -->
+<!--     <span class="text-wrapper"> -->
+<!--       <span class="line line1"></span> -->
+<!--       <span class="letters">Hello Goodbye</span> -->
+<!--     </span> -->
+<!--   </h2> -->
+<!-- </div> -->
 
 
-```{html}
-<h2 class="cd-headline loading-bar">
-                  
-                    <span>DATA</span>
-                                <span class="cd-words-wrapper is-loading">
-                                                                <b class="is-hidden">SCIENTIST</b>
-                                            <b class="is-hidden">ANALYST</b>
-                                            <b class="is-hidden">ENGINEER</b>
-                                            <b class="is-hidden">JOURNALIST</b>
-                                            <b class="is-visible">ARCHITECT</b>
-                                            <b class="is-hidden">OFFICER</b>
-                                            <b class="is-hidden">ARTIST</b>
-                                            <b class="is-hidden">EXPERT</b>
-                                            <b class="is-hidden">LOVER</b>
-                                    </span>
-                             </h2>
-
-```
-
-
-
-
-Data Network is a no-profit  is either to connect different backgrounds Data Scientists in Milan and to spread Data Literacy.
-Backgrounds (whether is educational, working experience or personal) mirror the way people approach a problem, the more they are the better the problem is understood.
-Data Literacy (i.e. transform complex mathematical problems and graph into approachable and familiar guidelines) is crucial, especially in this tough times where the overwhelming amount of data (infodemia) may confuse both the reader and the analyst.
-DN combines all of that by organizing data-themed events and offering technical and non technical corner talks held by a plenty of Junior and Senior scientists in front of anyone interested.
-Moreover the association has partnered with many different stakeholders, ranging from start-ups, telco, IT services, management consulting firms and other major corporate connections. It has also pushed teams into Hackatons and conferences within Italy.
 
 ## Cosa facciamo
 
 **<span style="color:#5d3bff">DN</span>** nella sua parte promozionale organizza eventi a tema "dati" nell'area di Milano e presto in remoto offrendo corner talks di esperti e figure più Junior provenienti da ogni settore. Data Network può essere anche il luogo di presentazione della propria start-up, adatto alla ricerca di collaboratori esterni e consigli da esperti già operanti nella area strategica d'affari.
 Data Network vanta collaborazioni con una multitudine di Stakeholders provenienti da varie industrie: dalle telecomunicazioni, ai servizi di streaming, a forti connessioni con società di management consulting, per arrivare a giganti corporate. 
 La comunità proattiva di data network è sempre pronta a nuove sfide e recentemente è stato composto un team per partecipare ad Hackatons e competizioni a tema codice e dati.
+
+![data has a better idea](images/data_has_a_better_idea.jpg)
 
 
 ## **<span style="color:#5d3bff">Data Network</span>** match
@@ -52,7 +39,7 @@ Una funzione esclusiva a cui i soci hanno accesso è il Data Network Match. DN m
 - le esperienze vengono condivise
 - la ricerca di un collaboratore per progetti interni o esterni sia facile e veloce
 - il contatto diretto con stakeholders delle realtà partners di DN 
-
+  
 
 
 ## Un po' di storia recente

@@ -11,7 +11,7 @@ link-citations: yes
 # Welcome {.unnumbered}
 
 
-<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-07-30. 
+<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-08-05. 
 
 
 La documentazione si oritenta a presentare gli obiettivi a lungo termine del progetto condiviso, oltre al continuo aggiornamento
