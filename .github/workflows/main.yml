@@ -40,7 +40,7 @@ jobs:
         git add data/*
         git add logging.log
         git commit -am "GH ACTION Autorun $(date)"
-        git push origin logging.log
+        git push origin logging
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
