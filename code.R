@@ -40,7 +40,7 @@ check_url_status <- function(href) {
 
 # 1.0 urls, static files and params  ----
 
-log_appender(appender_file(file = "logging.log"))
+log_appender(appender_file(file = "logging.log", append = TRUE))
 
 urls <- list(
   url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",
@@ -379,6 +379,3 @@ tryCatch(
   }
 )
 
-# 7 append logs ----
-
-log_appender()
