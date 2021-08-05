@@ -13,6 +13,8 @@ library(httr)
 # 0 utils ----
 # thx https://sherif.io/2016/06/30/checking-links-responses-httr-r.html
 
+
+
 check_url_status <- function(href) {
   log_info("Checking ", href, "...\n")
   tryCatch(

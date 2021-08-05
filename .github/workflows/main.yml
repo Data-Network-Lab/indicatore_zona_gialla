@@ -5,10 +5,10 @@ name: refresh_data
 #  “every 3 hours”
 #  https://crontab.guru/
 on:
-  schedule:
-    - cron:  '0 */3 * * * '
-  # push:
-  #   branches: main
+  push:
+    branches: logging
+  # schedule:
+  #   - cron:  '0 */3 * * * '
 
 
 jobs: 
@@ -24,17 +24,8 @@ jobs:
     # Set-up R
     - name: Install packages
       run: |
-        R -e 'install.packages("dplyr")'
-        R -e 'install.packages("stringr")'
-        R -e 'install.packages("purrr")'
-        R -e 'install.packages("httr")'
-        R -e 'install.packages("timetk")'
-        R -e 'install.packages("readr")'
-        R -e 'install.packages("readxl")'
-        R -e 'install.packages("tidyr")'
-        R -e 'install.packages("logger")'
-        R -e 'install.packages("lubridate")'
-        R -e 'install.packages("here")'
+        R -e 'install.packages("renv")'
+        R -e 'renv::restore()'
         
         
 # Run pipeline
@@ -47,8 +38,9 @@ jobs:
         git config --local user.name github-actions
         git config --local user.email "actions@github.com"
         git add data/*
+        git add logs
         git commit -am "GH ACTION Autorun $(date)"
-        git push origin main
+        git push origin logging
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
