@@ -26,10 +26,13 @@ jobs:
       run: |
         R -e 'install.packages("dplyr")'
         R -e 'install.packages("stringr")'
+        R -e 'install.packages("purrr")'
+        R -e 'install.packages("httr")'
         R -e 'install.packages("timetk")'
         R -e 'install.packages("readr")'
         R -e 'install.packages("readxl")'
         R -e 'install.packages("tidyr")'
+        R -e 'install.packages("logger")'
         R -e 'install.packages("lubridate")'
         R -e 'install.packages("here")'
         

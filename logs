@@ -1,0 +1,39 @@
+INFO [2021-08-05 15:32:46] Parsing Data Sources
+INFO [2021-08-05 15:32:46] ...
+INFO [2021-08-05 15:32:46] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 15:32:46] Success: (200) OK
+INFO [2021-08-05 15:32:46] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 15:32:46] Success: (200) OK
+INFO [2021-08-05 15:32:46] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 15:32:46] Success: (200) OK
+INFO [2021-08-05 15:32:46] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 15:32:47] read dati_statistici_riferimento success
+INFO [2021-08-05 15:32:47] read and prepping incidenza
+INFO [2021-08-05 15:32:47] read Incidenza success
+INFO [2021-08-05 15:32:47] elaborate incidenza
+INFO [2021-08-05 15:32:47] elaboration incidenza success
+INFO [2021-08-05 15:32:47] read & prepping vaccini
+WARN [2021-08-05 15:32:49] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 15:32:50] read & prep Vaccini success
+INFO [2021-08-05 15:32:50] elaborate vaccini
+WARN [2021-08-05 15:32:50] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 15:32:50] elaborate Vaccini success
+INFO [2021-08-05 15:32:50] join tbls
+WARN [2021-08-05 15:32:50] Joining, by = "denominazione_regione"
+WARN [2021-08-05 15:32:50] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 15:32:50] tables joined with success
+INFO [2021-08-05 15:32:50] write .csv output
+INFO [2021-08-05 15:32:50] write .csv output success
+INFO [2021-08-05 15:32:50] graph: write .csv tabella semplice
+INFO [2021-08-05 15:32:50] write .csv tabella semplice success
+INFO [2021-08-05 15:32:50] graph: write .csv mappa
+INFO [2021-08-05 15:32:50] write .csv mappa success
+INFO [2021-08-05 15:32:50] graph: write .csv scatterplot
+INFO [2021-08-05 15:32:51] write .csv scatterplot success
+INFO [2021-08-05 15:32:51] graph: write .csv arrowplot
+INFO [2021-08-05 15:32:51] write .csv indicatore_t success
+INFO [2021-08-05 15:32:51] write .csv indicatore_t1 success
+INFO [2021-08-05 15:32:51] graph: write .csv time series (settimanale)
+INFO [2021-08-05 15:32:51] write .csv Time series (settimanale) success
+INFO [2021-08-05 15:32:51] graph: write .csv time series (giornaliero)
+INFO [2021-08-05 15:32:51] write .csv Time series (giornaliero) success
