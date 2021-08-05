@@ -37,6 +37,8 @@ check_url_status <- function(href) {
   )
 }
 
+
+
 # 1.0 urls, static files and params  ----
 
 log_appender(appender_file(file = "logging.log", append = TRUE))
