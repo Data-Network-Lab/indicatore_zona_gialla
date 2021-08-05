@@ -143,3 +143,32 @@ INFO [2021-08-05 14:55:46] write .csv indicatore_t success
 INFO [2021-08-05 14:55:46] write .csv indicatore_t1 success
 INFO [2021-08-05 14:55:46] write .csv Time series (settimanale) success
 INFO [2021-08-05 14:55:46] write .csv Time series (giornaliero) success
+INFO [2021-08-05 15:13:36] Parsing Data Sources ...
+INFO [2021-08-05 15:13:36] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 15:13:36] Success: (200) OK
+INFO [2021-08-05 15:13:36] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 15:13:36] Success: (200) OK
+INFO [2021-08-05 15:13:36] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 15:13:37] Success: (200) OK
+INFO [2021-08-05 15:13:37] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 15:13:38] read dati_statistici_riferimento success
+INFO [2021-08-05 15:13:38] reading, prepping elaborating incidenza ...
+INFO [2021-08-05 15:13:39] read Incidenza success
+INFO [2021-08-05 15:13:39] elaboration incidenza success
+INFO [2021-08-05 15:13:39] reading, prepping elaborating vaccini ...
+WARN [2021-08-05 15:13:41] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 15:13:42] read & prep Vaccini success
+WARN [2021-08-05 15:13:42] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 15:13:42] elaborate Vaccini success
+INFO [2021-08-05 15:13:42] reading, prepping elaborating output ...
+WARN [2021-08-05 15:13:42] Joining, by = "denominazione_regione"
+WARN [2021-08-05 15:13:42] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 15:13:42] tables joined with success
+INFO [2021-08-05 15:13:42] write .csv output success
+INFO [2021-08-05 15:13:42] write .csv tabella semplice success
+INFO [2021-08-05 15:13:42] write .csv mappa success
+INFO [2021-08-05 15:13:42] write .csv scatterplot success
+INFO [2021-08-05 15:13:42] write .csv indicatore_t success
+INFO [2021-08-05 15:13:42] write .csv indicatore_t1 success
+INFO [2021-08-05 15:13:42] write .csv Time series (settimanale) success
+INFO [2021-08-05 15:13:43] write .csv Time series (giornaliero) success
