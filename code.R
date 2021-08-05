@@ -13,10 +13,6 @@ library(httr)
 # 0 utils ----
 # thx https://sherif.io/2016/06/30/checking-links-responses-httr-r.html
 
-
-
-
-
 check_url_status <- function(href) {
   log_info("Checking ", href, "...\n")
   tryCatch(
@@ -44,7 +40,7 @@ check_url_status <- function(href) {
 
 # 1.0 urls, static files and params  ----
 
-
+log_appender(appender_file(file = "logging.log"))
 
 urls <- list(
   url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",
@@ -52,8 +48,7 @@ urls <- list(
   url_vaccini <- "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
 )
 
-log_info("Parsing Data Sources")
-log_info("...")
+log_info("Parsing Data Sources ...")
 map(urls, check_url_status)
 
 
@@ -90,7 +85,7 @@ tryCatch(
 # 3 Incidenza ----
 
 
-log_info("read and prepping incidenza")
+log_info("reading, prepping elaborating incidenza ...")
 tryCatch(
   {
     withCallingHandlers(
@@ -112,7 +107,6 @@ tryCatch(
 )
 
 
-log_info("elaborate incidenza")
 tryCatch(
   {
     incidenza_per_settimana <- incidenza_prepped %>%
@@ -135,9 +129,7 @@ tryCatch(
 
 
 # 4  Vaccini  ----
-log_info("read & prepping vaccini")
-
-
+log_info("reading, prepping elaborating vaccini ...")
 tryCatch(
   {
     withCallingHandlers(
@@ -170,7 +162,6 @@ tryCatch(
   }
 )
 
-log_info("elaborate vaccini")
 tryCatch(
   {
     withCallingHandlers(
@@ -193,8 +184,7 @@ tryCatch(
 
 # 5 output ----
 
-log_info("join tbls")
-
+log_info("reading, prepping elaborating output ...")
 
 tryCatch(
   {
@@ -247,7 +237,6 @@ tryCatch(
 #   )
 
 
-log_info("write .csv output")
 tryCatch(
   {
     write_csv(
@@ -267,7 +256,6 @@ tryCatch(
 
 
 ## 6.1 tabella semplice
-log_info("graph: write .csv tabella semplice")
 tryCatch(
   {
     pre_output %>%
@@ -285,7 +273,6 @@ tryCatch(
 
 
 ## 6.2 mappa
-log_info("graph: write .csv mappa")
 tryCatch(
   {
     pre_output %>%
@@ -303,7 +290,6 @@ tryCatch(
 
 
 ## 6.3 scatterplot
-log_info("graph: write .csv scatterplot")
 tryCatch(
   {
     pre_output %>%
@@ -325,7 +311,6 @@ tryCatch(
 
 
 ## 6.4 Arrow Plot
-log_info("graph: write .csv arrowplot")
 tryCatch(
   {
     indicatore_t <- pre_output %>%
@@ -346,7 +331,6 @@ tryCatch(
 
 
 ## 6.5 Time series (settimanale)
-log_info("graph: write .csv time series (settimanale)")
 tryCatch(
   {
     pre_output %>%
@@ -374,9 +358,6 @@ tryCatch(
 
 
 ## 6.6 Time series (giornaliero)
-
-log_info("graph: write .csv time series (giornaliero)")
-
 last_days <- 10
 
 tryCatch(
@@ -400,4 +381,4 @@ tryCatch(
 
 # 7 append logs ----
 
-log_appender(appender_file(file = "logs"))
+log_appender()

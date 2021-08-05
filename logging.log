@@ -1,0 +1,116 @@
+INFO [2021-08-05 16:33:24] Parsing Data Sources ...
+INFO [2021-08-05 16:33:24] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 16:33:24] Success: (200) OK
+INFO [2021-08-05 16:33:24] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 16:33:25] Success: (200) OK
+INFO [2021-08-05 16:33:25] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 16:33:25] Success: (200) OK
+INFO [2021-08-05 16:33:25] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 16:33:25] read dati_statistici_riferimento success
+INFO [2021-08-05 16:33:25] reading, prepping elaborating incidenza ...
+INFO [2021-08-05 16:33:26] read Incidenza success
+INFO [2021-08-05 16:33:26] elaboration incidenza success
+INFO [2021-08-05 16:33:26] reading, prepping elaborating vaccini ...
+WARN [2021-08-05 16:33:28] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:33:29] read & prep Vaccini success
+WARN [2021-08-05 16:33:29] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:33:29] elaborate Vaccini success
+INFO [2021-08-05 16:33:29] reading, prepping elaborating output ...
+WARN [2021-08-05 16:33:29] Joining, by = "denominazione_regione"
+WARN [2021-08-05 16:33:29] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 16:33:29] tables joined with success
+INFO [2021-08-05 16:33:29] write .csv output success
+INFO [2021-08-05 16:33:29] write .csv tabella semplice success
+INFO [2021-08-05 16:33:30] write .csv mappa success
+INFO [2021-08-05 16:33:30] write .csv scatterplot success
+INFO [2021-08-05 16:33:30] write .csv indicatore_t success
+INFO [2021-08-05 16:33:30] write .csv indicatore_t1 success
+INFO [2021-08-05 16:33:30] write .csv Time series (settimanale) success
+INFO [2021-08-05 16:33:30] write .csv Time series (giornaliero) success
+INFO [2021-08-05 16:33:47] Parsing Data Sources ...
+INFO [2021-08-05 16:33:47] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 16:33:47] Success: (200) OK
+INFO [2021-08-05 16:33:47] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 16:33:47] Success: (200) OK
+INFO [2021-08-05 16:33:47] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 16:33:47] Success: (200) OK
+INFO [2021-08-05 16:33:47] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 16:33:47] read dati_statistici_riferimento success
+INFO [2021-08-05 16:33:47] reading, prepping elaborating incidenza ...
+INFO [2021-08-05 16:33:48] read Incidenza success
+INFO [2021-08-05 16:33:48] elaboration incidenza success
+INFO [2021-08-05 16:33:48] reading, prepping elaborating vaccini ...
+WARN [2021-08-05 16:33:50] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:33:50] read & prep Vaccini success
+WARN [2021-08-05 16:33:50] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:33:50] elaborate Vaccini success
+INFO [2021-08-05 16:33:50] reading, prepping elaborating output ...
+WARN [2021-08-05 16:33:50] Joining, by = "denominazione_regione"
+WARN [2021-08-05 16:33:50] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 16:33:50] tables joined with success
+INFO [2021-08-05 16:33:51] write .csv output success
+INFO [2021-08-05 16:33:51] write .csv tabella semplice success
+INFO [2021-08-05 16:33:51] write .csv mappa success
+INFO [2021-08-05 16:33:52] write .csv scatterplot success
+INFO [2021-08-05 16:33:52] write .csv indicatore_t success
+INFO [2021-08-05 16:33:52] write .csv indicatore_t1 success
+INFO [2021-08-05 16:33:52] write .csv Time series (settimanale) success
+INFO [2021-08-05 16:33:52] write .csv Time series (giornaliero) success
+INFO [2021-08-05 16:34:15] Parsing Data Sources ...
+INFO [2021-08-05 16:34:15] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 16:34:15] Success: (200) OK
+INFO [2021-08-05 16:34:15] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 16:34:15] Success: (200) OK
+INFO [2021-08-05 16:34:15] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 16:34:15] Success: (200) OK
+INFO [2021-08-05 16:34:15] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 16:34:16] read dati_statistici_riferimento success
+INFO [2021-08-05 16:34:16] reading, prepping elaborating incidenza ...
+INFO [2021-08-05 16:34:16] read Incidenza success
+INFO [2021-08-05 16:34:16] elaboration incidenza success
+INFO [2021-08-05 16:34:16] reading, prepping elaborating vaccini ...
+WARN [2021-08-05 16:34:19] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:34:20] read & prep Vaccini success
+WARN [2021-08-05 16:34:20] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:34:20] elaborate Vaccini success
+INFO [2021-08-05 16:34:20] reading, prepping elaborating output ...
+WARN [2021-08-05 16:34:21] Joining, by = "denominazione_regione"
+WARN [2021-08-05 16:34:21] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 16:34:21] tables joined with success
+INFO [2021-08-05 16:34:21] write .csv output success
+INFO [2021-08-05 16:34:22] write .csv tabella semplice success
+INFO [2021-08-05 16:34:22] write .csv mappa success
+INFO [2021-08-05 16:34:22] write .csv scatterplot success
+INFO [2021-08-05 16:34:22] write .csv indicatore_t success
+INFO [2021-08-05 16:34:22] write .csv indicatore_t1 success
+INFO [2021-08-05 16:34:23] write .csv Time series (settimanale) success
+INFO [2021-08-05 16:34:23] write .csv Time series (giornaliero) success
+INFO [2021-08-05 16:34:30] Parsing Data Sources ...
+INFO [2021-08-05 16:34:30] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-05 16:34:30] Success: (200) OK
+INFO [2021-08-05 16:34:30] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-05 16:34:30] Success: (200) OK
+INFO [2021-08-05 16:34:30] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-05 16:34:30] Success: (200) OK
+INFO [2021-08-05 16:34:30] read & prepping dati_statistici_riferimento
+INFO [2021-08-05 16:34:30] read dati_statistici_riferimento success
+INFO [2021-08-05 16:34:30] reading, prepping elaborating incidenza ...
+INFO [2021-08-05 16:34:31] read Incidenza success
+INFO [2021-08-05 16:34:31] elaboration incidenza success
+INFO [2021-08-05 16:34:31] reading, prepping elaborating vaccini ...
+WARN [2021-08-05 16:34:33] `summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:34:34] read & prep Vaccini success
+WARN [2021-08-05 16:34:34] `summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+INFO [2021-08-05 16:34:34] elaborate Vaccini success
+INFO [2021-08-05 16:34:34] reading, prepping elaborating output ...
+WARN [2021-08-05 16:34:34] Joining, by = "denominazione_regione"
+WARN [2021-08-05 16:34:34] Joining, by = c("data", "denominazione_regione")
+INFO [2021-08-05 16:34:34] tables joined with success
+INFO [2021-08-05 16:34:35] write .csv output success
+INFO [2021-08-05 16:34:35] write .csv tabella semplice success
+INFO [2021-08-05 16:34:35] write .csv mappa success
+INFO [2021-08-05 16:34:36] write .csv scatterplot success
+INFO [2021-08-05 16:34:36] write .csv indicatore_t success
+INFO [2021-08-05 16:34:36] write .csv indicatore_t1 success
+INFO [2021-08-05 16:34:36] write .csv Time series (settimanale) success
+INFO [2021-08-05 16:34:36] write .csv Time series (giornaliero) success
