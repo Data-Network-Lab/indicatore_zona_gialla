@@ -5,8 +5,8 @@ name: refresh_data
 #  “every 3 hours”
 #  https://crontab.guru/
 on:
-  schedule:
-    - cron:  '0 */3 * * * '
+  # schedule:
+  #   - cron:  '0 */3 * * * '
   # push:
   #   branches: main
 
