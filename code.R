@@ -20,10 +20,10 @@ check_url_status <- function(href) {
       check_head <- HEAD(href)
       status <- check_head$status_code %>% as.integer()
       if (status == "0" | status == "522") {
-        return(log_error("Timed out"))
+        return(log_error("message [Timed out]"))
       }
       if (status == "520") {
-        return(log_error("Unknown error: (520)"))
+        return(log_error("message [Unknown error: (520)]"))
       }
       msg <- status %>%
         http_status() %>%
@@ -32,16 +32,16 @@ check_url_status <- function(href) {
       return(log_info(msg))
     },
     error = function(e) {
-      return(log_error("no status code..."))
+      return(log_error("message [no status code...]"))
     }
   )
 }
 
 
-
 # 1.0 urls, static files and params  ----
 
 log_appender(appender_file(file = "logging.log", append = TRUE))
+log_layout(layout_json())
 
 urls <- list(
   url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",
@@ -49,7 +49,7 @@ urls <- list(
   url_vaccini <- "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
 )
 
-log_info("Parsing Data Sources ...")
+
 map(urls, check_url_status)
 
 
@@ -63,8 +63,6 @@ efficacia <- 0.95
 
 # 2.0 dati_statistici_riferimento prepped   ----
 # (4 months ago)
-
-log_info("read & prepping dati_statistici_riferimento")
 
 tryCatch(
   {
@@ -84,9 +82,6 @@ tryCatch(
 )
 
 # 3 Incidenza ----
-
-
-log_info("reading, prepping elaborating incidenza ...")
 tryCatch(
   {
     withCallingHandlers(
@@ -97,13 +92,13 @@ tryCatch(
             data = str_extract(data, "([^\\s]+)"),
             data = ymd(data)
           )
-        log_info("read Incidenza success")
+        log_info("prep Incidenza success")
       },
-      message = function(cnd) log_warn(cnd$message)
+      message = function(cnd) log_warn("message [{cnd$message}]")
     )
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong with Incidenza, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong with Incidenza, error: \n {e}]"))
   }
 )
 
@@ -117,10 +112,10 @@ tryCatch(
         incremento = totale_casi - totale_casi_lag
       ) %>%
       ungroup()
-    log_info("elaboration incidenza success")
+    log_info("clean Incidenza success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong with elaborate incidenza, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong with elaborate incidenza, error: \n {e}]"))
     
   }
 )
@@ -130,7 +125,6 @@ tryCatch(
 
 
 # 4  Vaccini  ----
-log_info("reading, prepping elaborating vaccini ...")
 tryCatch(
   {
     withCallingHandlers(
@@ -153,13 +147,13 @@ tryCatch(
             fornitore == "Janssen" ~ prima_dose + pregressa_infezione,
             TRUE ~ seconda_dose + pregressa_infezione
           ))
-        log_info("read & prep Vaccini success")
+        log_info("prep Vaccini success")
       },
-      message = function(cnd) log_warn(cnd$message)
+      message = function(cnd) log_warn("message [{cnd$message}]")
     )
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong with read & prep, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong with read & prep, error: \n {e}]"))
   }
 )
 
@@ -172,21 +166,18 @@ tryCatch(
           summarise(nuovi_vaccinati = sum(totale)) %>%
           group_by(denominazione_regione) %>%
           mutate(vaccinati = cumsum(nuovi_vaccinati))
-        log_info("elaborate Vaccini success")
+        log_info("clean Vaccini success")
       },
-      message = function(cnd) log_warn(cnd$message)
+      message = function(cnd) log_warn("message [{cnd$message}]")
     )
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong with elaborate Vaccini, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong with elaborate Vaccini, error: \n {e}]"))
   }
 )
 
 
 # 5 output ----
-
-log_info("reading, prepping elaborating output ...")
-
 tryCatch(
   {
     withCallingHandlers(
@@ -216,13 +207,13 @@ tryCatch(
             indicatore_stress = (incidenza) / soglia_50_equivalente
           ) %>%
           mutate(across(where(is.numeric), round, digits = 2))
-        log_info("tables joined with success")
+        log_info("prep indicatore-stress success")
       },
-      message = function(cnd) log_warn(cnd$message)
+      message = function(cnd) log_warn("message [{cnd$message}]")
     )
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while joining tables, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while joining tables, error: \n {e}]"))
   }
 )
 
@@ -245,10 +236,10 @@ tryCatch(
       file = here("data", "indicatore_stress.csv"),
       append = TRUE
     )
-    log_info("write .csv output success")
+    log_info("write output success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while joining tables, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing indicatore_stress, error: \n {e}]"))
   }
 )
 
@@ -265,10 +256,10 @@ tryCatch(
         file = here("data", "graph-data", "tabella_semplice.csv"),
         append = TRUE
       )
-    log_info("write .csv tabella semplice success")
+    log_info("write tabella_semplice success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while tabella semplice, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing tabella semplice, error: \n {e}]"))
   }
 )
 
@@ -282,10 +273,10 @@ tryCatch(
         file = here("data", "graph-data", "mappa.csv"),
         append = TRUE
       )
-    log_info("write .csv mappa success")
+    log_info("write mappa success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while mappa, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing mappa, error: \n {e}]"))
   }
 )
 
@@ -303,10 +294,10 @@ tryCatch(
         file = here("data", "graph-data", "scatterplot.csv"),
         append = TRUE
       )
-    log_info("write .csv scatterplot success")
+    log_info("write scatterplot success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while scatterplot, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while wrinting scatterplot, error: \n {e}]"))
   }
 )
 
@@ -317,16 +308,21 @@ tryCatch(
     indicatore_t <- pre_output %>%
       select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) %>%
       tail(21)
-    log_info("write .csv indicatore_t success")
     
     indicatore_t1 <- pre_output %>%
       select(indicatore_stress_t1 = indicatore_stress) %>%
       tail(42) %>%
       head(21)
-    log_info("write .csv indicatore_t1 success")
+    
+    bind_cols(indicatore_t, indicatore_t1) %>% 
+      write_csv(
+        file = here("data","graph-data", "arrow_plot.csv"),
+        append = TRUE
+      )
+    log_info("write arrow_plot success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while arrowplot, error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing arrowplot, error: \n {e}]"))
   }
 )
 
@@ -349,10 +345,10 @@ tryCatch(
         file = here("data", "graph-data", "variazione_settimanale.csv"),
         append = TRUE
       )
-    log_info("write .csv Time series (settimanale) success")
+    log_info("write variazione_settimanale success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while Time series (settimanale), error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing variazione_settimanale, error: \n {e}]"))
   }
 )
 
@@ -373,10 +369,10 @@ tryCatch(
         append = TRUE
       )
     
-    log_info("write .csv Time series (giornaliero) success")
+    log_info("write variazione_giornaliera success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong while Time series (giornaliero), error: \n {e}"))
+    log_error(formatter_glue("message [something went wrong while writing variazione_giornaliera, error: \n {e}]"))
   }
 )
 
