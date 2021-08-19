@@ -1,0 +1,25 @@
+# YAML 1.2
+---
+abstract: 
+authors: 
+  -
+    family-names: Salvini
+    given-names: "Niccolò "
+  -
+    affiliation: "Università Bicocca"
+    family-names: Nardelli
+    given-names: Vincenzo
+    orcid: "https://orcid.org/https://orcid.org/0000-0002-7215-7934"
+cff-version: "1.1.0"
+date-released: 2021-09-01
+keywords: 
+  - "etl pipeline"
+  - "automated workflow"
+  - "open source"
+  - "covid 19"
+license: MIT
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://github.com/Data-Network-Lab/indicatore_zona_gialla"
+title: "Indicatore Zona Gialla"
+version: "1.0"
+...
