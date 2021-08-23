@@ -182,7 +182,7 @@ tryCatch(
   {
     withCallingHandlers(
       {
-        pre_output <- incidenza_per_settimana %>%
+        output <- incidenza_per_settimana %>%
           left_join(static_data) %>%
           left_join(vaccini_per_settimana) %>%
           mutate(
@@ -220,9 +220,9 @@ tryCatch(
 
 
 ## TODO add_totals per week
-# output <- pre_output %>%
+# output <- output %>%
 #   bind_rows(
-#     pre_output %>%
+#     output %>%
 #       group_by(data) %>%
 #       summarise(across(where(is.numeric), ~ sum(.x, na.rm = TRUE))) %>%
 #       mutate("cyl" = "Total")
@@ -232,7 +232,7 @@ tryCatch(
 tryCatch(
   {
     write_csv(
-      x = pre_output,
+      x = output,
       file = here("data", "indicatore_stress.csv"),
       append = TRUE
     )
@@ -250,7 +250,7 @@ tryCatch(
 ## 6.1 tabella semplice
 tryCatch(
   {
-    pre_output %>%
+    output %>%
       filter(between(data, left = today() - 1, right = today() - 1)) %>%
       write_csv(
         file = here("data", "graph-data", "tabella_semplice.csv"),
@@ -267,7 +267,7 @@ tryCatch(
 ## 6.2 mappa
 tryCatch(
   {
-    pre_output %>%
+    output %>%
       select(denominazione_regione, indicatore_stress) %>%
       write_csv(
         file = here("data", "graph-data", "mappa.csv"),
@@ -284,7 +284,7 @@ tryCatch(
 ## 6.3 scatterplot
 tryCatch(
   {
-    pre_output %>%
+    output %>%
       select(
         denominazione_regione,
         indicatore_stress,
@@ -305,11 +305,11 @@ tryCatch(
 ## 6.4 Arrow Plot
 tryCatch(
   {
-    indicatore_t <- pre_output %>%
+    indicatore_t <- output %>%
       select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) %>%
       tail(21)
     
-    indicatore_t1 <- pre_output %>%
+    indicatore_t1 <- output %>%
       select(indicatore_stress_t1 = indicatore_stress) %>%
       tail(42) %>%
       head(21)
@@ -330,7 +330,7 @@ tryCatch(
 ## 6.5 Time series (settimanale)
 tryCatch(
   {
-    pre_output %>%
+    output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
       mutate(week = week(data)) %>%
       filter(between(data, left = ymd("2021-01-01"), right = today())) %>%
@@ -359,7 +359,7 @@ last_days <- 10
 
 tryCatch(
   {
-    pre_output %>%
+    output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
       tail(21 * last_days) %>%
       group_by(data) %>%
