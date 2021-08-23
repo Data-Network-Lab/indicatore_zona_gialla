@@ -4,32 +4,29 @@ library(readr)
 library(readxl)
 library(writexl)
 library(lubridate)
-library(slider)
-library(timetk) ## questioning
+library(timetk)
+library(tidyr)
 library(here)
 
+## 0 params ----
+efficacia <- 0.95
+last_days <- 10
 
-# 1.0 urls, static files and params  ----
+
+# 1 urls & params  ----
 url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
 url_dati_rif <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv"
 url_vaccini <- "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
 static_data <- read_excel(here("data", "data-raw", "static_data.xlsx"))
 
 
-delta <- 7
-efficacia <- 0.95
-
-
-
-# 2.0 dati prepped (4 months ago)  ----
-# dati relativi a popolazione per ogni regione
+# 2 dati_statistici_riferimento (4 months ago)  ----
 dati_statistici_riferimento <- read_csv(url_dati_rif, show_col_types = FALSE) %>%
   count(denominazione_regione,
     wt = totale_generale,
     name = "popolazione_totale",
     sort = T
   )
-
 
 
 # 3 Incidenza ----
@@ -40,13 +37,28 @@ incidenza_prepped <- read_csv(url_incidenza, show_col_types = FALSE) %>%
     data = ymd(data)
   )
 
-inciddenza_per_settimana <- incidenza_prepped %>%
+
+## metti solo date complete . complete argument
+## in slider_period_dfr
+incidenza_per_settimana <- incidenza_prepped %>%
   group_by(denominazione_regione) %>%
+  summarise_by_time(
+    .date_var = data,
+    .by = "week", .type = "ceiling",
+    totale_casi_da_inizio = last(totale_casi),
+    terapia_intensiva = sum(terapia_intensiva),
+    ricoverati_con_sintomi = sum(ricoverati_con_sintomi)
+  ) %>%
+  tk_augment_lags(
+    .value = totale_casi_da_inizio,
+    .lags = 1
+  ) %>%
   mutate(
-    totale_casi_lag = lag(totale_casi, n = delta),
-    incremento = totale_casi - totale_casi_lag
+    incremento_settimanale = totale_casi_da_inizio - totale_casi_da_inizio_lag1
   ) %>%
   ungroup()
+
+
 
 
 # 4  Vaccini  ----
@@ -61,28 +73,36 @@ vaccini_prepped <- read_csv(url_vaccini, show_col_types = FALSE) %>%
       denominazione_regione == "Valle d'Aosta / Vallée d'Aoste" ~ "Valle d'Aosta",
       TRUE ~ denominazione_regione
     )
-  ) %>%
-  group_by(data, denominazione_regione, fornitore) %>%
-  summarise(across(where(is.numeric), sum)) %>%
-  mutate(totale = case_when(
-    fornitore == "Janssen" ~ prima_dose + pregressa_infezione,
-    TRUE ~ seconda_dose + pregressa_infezione
-  ))
+  )
+
 
 vaccini_per_settimana <- vaccini_prepped %>%
+  group_by(data, denominazione_regione, fornitore) %>%
+  summarise_by_time(
+    .date_var = data,
+    .by = "week",
+    .type = "ceiling",
+    across(where(is.numeric), sum)
+  ) %>%
+  mutate(
+    totale = case_when(
+      fornitore == "Janssen" ~ prima_dose + pregressa_infezione,
+      TRUE ~ seconda_dose + pregressa_infezione
+    )
+  ) %>%
   group_by(data, denominazione_regione) %>%
   summarise(nuovi_vaccinati = sum(totale)) %>%
   group_by(denominazione_regione) %>%
   mutate(vaccinati = cumsum(nuovi_vaccinati))
 
 
-# 5 output ----
 
-output <- inciddenza_per_settimana %>%
+# 5 output -----
+output <- incidenza_per_settimana %>%
   left_join(static_data) %>%
   left_join(vaccini_per_settimana) %>%
   mutate(
-    incidenza = incremento / (popolazione / 100000),
+    incidenza = incremento_settimanale / (popolazione / 100000),
     saturazione_ti = terapia_intensiva / PL_terapia_intensiva,
     saturazione_area_non_critica = ricoverati_con_sintomi / PL_area_non_critica,
     casi_soglia_50 = popolazione / 100000 * 50,
@@ -102,34 +122,99 @@ output <- inciddenza_per_settimana %>%
     soglia_250_equivalente = round(250 * moltiplicatore_vaccini, 0),
     indicatore_stress = (incidenza) / soglia_50_equivalente
   ) %>%
-  mutate_if(is.numeric, round, digits = 2)
+  mutate(across(where(is.numeric), round, digits = 2))
 
 
 
-
-#
-#
-# write_xlsx(
-#   list(
-#     input = input,
-#       suscettibili = suscettibili,
-#     soglia_effettiva = soglia_effettiva,
-#     soglia_equivalente = soglia_equivalente,
-#     rischio_zona_gialla = rischio_zona_gialla,
-#     all = risultati
-#   ),
-#   paste0("data/risultati-",Sys.Date(),"-",sample(10,1),".xlsx")
-# )
-#
+write_csv(
+  x = output,
+  file = here("data", "indicatore_stress.csv"),
+  append = TRUE
+)
 
 
 
 # 6 Visualization Data ----
 
-
 ## 6.1 tabella semplice
+output %>%
+  filter_by_time(
+    .date_var = data,
+    .start_date = today() - 6,
+    .end_date = today()
+  ) %>% 
+write_csv(
+  file = here("data", "graph-data", "tabella_semplice.csv"),
+  append = TRUE
+)
+
 ## 6.2 mappa
+output %>%
+  select(denominazione_regione, indicatore_stress) %>%
+  write_csv(
+    file = here("data", "graph-data", "mappa.csv"),
+    append = TRUE
+  )
+
+
 ## 6.3 scatterplot
-## 6.4 Range Plot
-## 6.5 Time series (settimanale)
-## 6.6 Time series (giornaliero)
+output %>%
+  select(
+    denominazione_regione,
+    indicatore_stress,
+    incidenza
+  ) %>%
+  write_csv(
+    file = here("data", "graph-data", "scatterplot.csv"),
+    append = TRUE
+  )
+
+## 6.4 Arrow Plot
+output %>%
+  filter_by_time(
+    .date_var = data,
+    .start_date = today() - 13,
+    .end_date = today()
+  ) %>% 
+  select(data, denominazione_regione, indicatore_stress) %>% 
+  pivot_wider(names_from = data, values_from = indicatore_stress) %>% 
+  write_csv(
+    file = here("data", "graph-data", "arrow_plot.csv"),
+    append = TRUE
+  )
+
+## 6.5 Time series (settimanale) per tante settimane
+
+output %>%
+  filter_by_time(
+    .date_var = data,
+    .start_date = ymd("2021-01-01"),
+    .end_date = today()
+  ) %>%
+  group_by(data) %>%
+  pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
+  select(contains("regione")) %>% 
+  fill(contains("regione"), .direction = 'updown') %>%  
+  ungroup() %>% 
+  write_csv(
+    file = here("data", "graph-data", "variazione_settimanale.csv"),
+    append = TRUE
+  )
+
+## 6.6 Time series (giornaliero) per l'ultima settimana
+
+output %>%
+  filter_by_time(
+    .date_var = data,
+    .start_date = today() -6,
+    .end_date = today()
+  ) %>%
+  group_by(data) %>%
+  pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
+  select(contains("regione")) %>% 
+  fill(contains("regione"), .direction = 'updown') %>%  
+  ungroup() %>% 
+  write_csv(
+    file = here("data", "graph-data", "variazione_ultima_settimana.csv"),
+    append = TRUE
+  )
