@@ -1,0 +1,27 @@
+INFO [2021-08-07 17:55:41] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv...
+INFO [2021-08-07 17:55:41] Success: (200) OK
+INFO [2021-08-07 17:55:41] Checking https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv...
+INFO [2021-08-07 17:55:41] Success: (200) OK
+INFO [2021-08-07 17:55:41] Checking https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv...
+INFO [2021-08-07 17:55:42] Success: (200) OK
+INFO [2021-08-07 17:55:42] read dati_statistici_riferimento success
+INFO [2021-08-07 17:55:44] prep Incidenza success
+INFO [2021-08-07 17:55:44] clean Incidenza success
+WARN [2021-08-07 17:55:47] message [`summarise()` has grouped output by 'data', 'denominazione_regione'. You can override using the `.groups` argument.
+]
+INFO [2021-08-07 17:55:48] prep Vaccini success
+WARN [2021-08-07 17:55:48] message [`summarise()` has grouped output by 'data'. You can override using the `.groups` argument.
+]
+INFO [2021-08-07 17:55:48] clean Vaccini success
+WARN [2021-08-07 17:55:49] message [Joining, by = "denominazione_regione"
+]
+WARN [2021-08-07 17:55:49] message [Joining, by = c("data", "denominazione_regione")
+]
+INFO [2021-08-07 17:55:49] prep indicatore-stress success
+INFO [2021-08-07 17:55:50] write output success
+INFO [2021-08-07 17:55:50] write tabella_semplice success
+INFO [2021-08-07 17:55:51] write mappa success
+INFO [2021-08-07 17:55:51] write scatterplot success
+INFO [2021-08-07 17:55:51] write arrow_plot success
+INFO [2021-08-07 17:55:51] write variazione_settimanale success
+INFO [2021-08-07 17:55:51] write variazione_giornaliera success
