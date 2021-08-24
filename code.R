@@ -49,8 +49,9 @@ urls <- list(
   url_vaccini <- "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
 )
 
-
+## map check_url over urls
 map(urls, check_url_status)
+
 
 
 static_data <- read_excel(here("data", "data-raw", "static_data.xlsx"))
@@ -63,7 +64,6 @@ efficacia <- 0.95
 
 # 2.0 dati_statistici_riferimento prepped   ----
 # (4 months ago)
-
 tryCatch(
   {
     dati_statistici_riferimento <- 
@@ -76,7 +76,7 @@ tryCatch(
     log_info("read dati_statistici_riferimento success")
   },
   error = function(e) {
-    log_error(formatter_glue("something went wrong with dati_statistici_riferimento, error: \n {e}"))
+    log_error(formatter_glue("something went wrong with dati_statistici_riferimento, error: {e}"))
     
   }
 )
@@ -98,7 +98,7 @@ tryCatch(
     )
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong with Incidenza, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong with Incidenza, error: {e}]"))
   }
 )
 
@@ -115,7 +115,7 @@ tryCatch(
     log_info("clean Incidenza success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong with elaborate incidenza, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong with elaborate incidenza, error: {e}]"))
     
   }
 )
@@ -153,7 +153,7 @@ tryCatch(
     )
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong with read & prep, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong with read & prep, error: {e}]"))
   }
 )
 
@@ -172,7 +172,7 @@ tryCatch(
     )
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong with elaborate Vaccini, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong with elaborate Vaccini, error: {e}]"))
   }
 )
 
