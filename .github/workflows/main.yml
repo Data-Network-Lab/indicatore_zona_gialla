@@ -9,8 +9,6 @@ on:
   #   - cron:  '0 */3 * * * '
   # push:
   #   branches: logging
-  # schedule:
-  #   - cron:  '0 */3 * * * '
 
 
 jobs: 
