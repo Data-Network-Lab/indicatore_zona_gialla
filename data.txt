@@ -40,3 +40,9 @@
   cols: 3
   description: refresh data for scatterplot
   type: table
+- path: data/graph-data/arrow_plot
+  name: data/graph-data/arrow_plot
+  rows: 21
+  cols: 4
+  description: refresh data for arrow_plot
+  type: table
