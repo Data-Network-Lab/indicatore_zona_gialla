@@ -16,3 +16,9 @@
   cols: 31
   description: refresh data for Indicatore_stress
   type: table
+- path: data/indicatore_stress
+  name: data/indicatore_stress
+  rows: 11676
+  cols: 31
+  description: refresh data for Indicatore_stress
+  type: table
