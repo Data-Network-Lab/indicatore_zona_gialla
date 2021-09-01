@@ -22,3 +22,39 @@
   cols: 31
   description: refresh data for Indicatore_stress
   type: table
+- path: data/graph-data/tabella_semplice
+  name: data/graph-data/tabella_semplice
+  rows: 21
+  cols: 31
+  description: refresh data for tabella_semplice
+  type: table
+- path: data/graph-data/mappa
+  name: data/graph-data/mappa
+  rows: 11676
+  cols: 2
+  description: refresh data for mappa
+  type: table
+- path: data/graph-data/scatterplot
+  name: data/graph-data/scatterplot
+  rows: 11676
+  cols: 3
+  description: refresh data for scatterplot
+  type: table
+- path: data/graph-data/arrow_plot
+  name: data/graph-data/arrow_plot
+  rows: 21
+  cols: 4
+  description: refresh data for arrow_plot
+  type: table
+- path: data/graph-data/time_series_per_settimana
+  name: data/graph-data/time_series_per_settimana
+  rows: 34
+  cols: 22
+  description: refresh data for time_series_per_settimana
+  type: table
+- path: data/graph-data/time_series_per_giorno
+  name: data/graph-data/time_series_per_giorno
+  rows: 10
+  cols: 22
+  description: refresh data for time_series_per_giorno
+  type: table

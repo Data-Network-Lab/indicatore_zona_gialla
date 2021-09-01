@@ -1,0 +1,13 @@
+path:
+- data.csv
+- data.rds
+rows: 11676
+cols: 2
+columns:
+  denominazione_regione: character
+  indicatore_stress: numeric
+description: refresh data for mappa
+type: table
+filenames:
+  data.csv: data.csv
+  data.rds: data.rds

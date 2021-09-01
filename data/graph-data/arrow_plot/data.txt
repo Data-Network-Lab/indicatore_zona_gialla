@@ -1,0 +1,15 @@
+path:
+- data.csv
+- data.rds
+rows: 21
+cols: 4
+columns:
+  data: Date
+  denominazione_regione: character
+  indicatore_stress_t: numeric
+  indicatore_stress_t1: numeric
+description: refresh data for arrow_plot
+type: table
+filenames:
+  data.csv: data.csv
+  data.rds: data.rds

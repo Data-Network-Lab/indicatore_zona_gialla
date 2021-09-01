@@ -1,0 +1,33 @@
+path:
+- data.csv
+- data.rds
+rows: 34
+cols: 22
+columns:
+  week: numeric
+  regione Campania: numeric
+  regione Lazio: numeric
+  regione Liguria: numeric
+  regione Lombardia: numeric
+  regione P.A. Bolzano: numeric
+  regione P.A. Trento: numeric
+  regione Piemonte: numeric
+  regione Puglia: numeric
+  regione Sardegna: numeric
+  regione Sicilia: numeric
+  regione Toscana: numeric
+  regione Umbria: numeric
+  regione Veneto: numeric
+  regione Abruzzo: numeric
+  regione Basilicata: numeric
+  regione Calabria: numeric
+  regione Emilia-Romagna: numeric
+  regione Friuli Venezia Giulia: numeric
+  regione Marche: numeric
+  regione Molise: numeric
+  regione Valle d'Aosta: numeric
+description: refresh data for time_series_per_settimana
+type: table
+filenames:
+  data.csv: data.csv
+  data.rds: data.rds
