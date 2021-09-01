@@ -34,3 +34,9 @@
   cols: 2
   description: refresh data for mappa
   type: table
+- path: data/graph-data/scatterplot
+  name: data/graph-data/scatterplot
+  rows: 11676
+  cols: 3
+  description: refresh data for scatterplot
+  type: table
