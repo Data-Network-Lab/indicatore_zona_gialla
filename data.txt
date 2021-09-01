@@ -1,0 +1,6 @@
+- path: Indicatore Zona Gialla
+  name: Indicatore Zona Gialla
+  rows: 11676
+  cols: 31
+  description: refresh data Indicatore Zona Gialla
+  type: table
