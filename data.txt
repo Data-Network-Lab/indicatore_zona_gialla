@@ -22,3 +22,9 @@
   cols: 31
   description: refresh data for Indicatore_stress
   type: table
+- path: data/graph-data/tabella_semplice
+  name: data/graph-data/tabella_semplice
+  rows: 21
+  cols: 31
+  description: refresh data for tabella_semplice
+  type: table
