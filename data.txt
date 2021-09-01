@@ -52,3 +52,9 @@
   cols: 22
   description: refresh data for time_series_per_settimana
   type: table
+- path: data/graph-data/time_series_per_giorno
+  name: data/graph-data/time_series_per_giorno
+  rows: 10
+  cols: 22
+  description: refresh data for time_series_per_giorno
+  type: table
