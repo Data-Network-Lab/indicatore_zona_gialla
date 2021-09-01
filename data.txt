@@ -10,3 +10,9 @@
   cols: 31
   description: refresh data Indicatore Zona Gialla
   type: table
+- path: indicatore_stress
+  name: indicatore_stress
+  rows: 11676
+  cols: 31
+  description: refresh data for Indicatore_stress
+  type: table

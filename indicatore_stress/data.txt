@@ -1,0 +1,42 @@
+path:
+- data.csv
+- data.rds
+rows: 11676
+cols: 31
+columns:
+  data: Date
+  denominazione_regione: character
+  totale_casi: numeric
+  terapia_intensiva: numeric
+  ricoverati_con_sintomi: numeric
+  totale_casi_lag: numeric
+  incremento: numeric
+  PL_area_non_critica: numeric
+  PL_terapia_intensiva: numeric
+  popolazione: numeric
+  nuovi_vaccinati: numeric
+  vaccinati: numeric
+  incidenza: numeric
+  saturazione_ti: numeric
+  saturazione_area_non_critica: numeric
+  casi_soglia_50: numeric
+  casi_soglia_150: numeric
+  casi_soglia_250: numeric
+  vaccinati_suscettibili: numeric
+  suscettibili: numeric
+  casi_soglia_50_suscettibili: numeric
+  casi_soglia_150_suscettibili: numeric
+  casi_soglia_250_suscettibili: numeric
+  soglia_50_effettiva: numeric
+  soglia_150_effettiva: numeric
+  soglia_250_effettiva: numeric
+  moltiplicatore_vaccini: numeric
+  soglia_50_equivalente: numeric
+  soglia_150_equivalente: numeric
+  soglia_250_equivalente: numeric
+  indicatore_stress: numeric
+description: refresh data for Indicatore_stress
+type: table
+filenames:
+  data.csv: data.csv
+  data.rds: data.rds
