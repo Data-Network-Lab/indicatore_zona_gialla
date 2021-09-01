@@ -72,7 +72,7 @@ efficacia <- 0.95
 tryCatch(
   {
     dati_statistici_riferimento <- 
-    read_csv(pluck(urls, 2), show_col_types = FALSE) %>%
+    read_csv(pin(pluck(urls, 2)), show_col_types = FALSE) %>%
       count(denominazione_regione,
             wt = totale_generale,
             name = "popolazione_totale",
@@ -91,7 +91,7 @@ tryCatch(
   {
     withCallingHandlers(
       {
-        incidenza_prepped <- read_csv(pluck(urls, 1), show_col_types = FALSE) %>%
+        incidenza_prepped <- read_csv(pin(pluck(urls, 1)), show_col_types = FALSE) %>%
           select(data, denominazione_regione, totale_casi, terapia_intensiva, ricoverati_con_sintomi) %>%
           mutate(
             data = str_extract(data, "([^\\s]+)"),
@@ -134,7 +134,7 @@ tryCatch(
   {
     withCallingHandlers(
       {
-        vaccini_prepped <- read_csv(pluck(urls, 3), show_col_types = FALSE) %>%
+        vaccini_prepped <- read_csv(pin(pluck(urls, 3)), show_col_types = FALSE) %>%
           select(data = data_somministrazione, denominazione_regione = nome_area, fascia_anagrafica, fornitore, prima_dose, seconda_dose, pregressa_infezione) %>%
           mutate(
             data = ymd(data),
@@ -237,7 +237,7 @@ tryCatch(
 tryCatch(
   {
     pin(output, 
-        name = "indicatore_stress", 
+        name = "data/indicatore_stress", 
         description = "refresh data for Indicatore_stress", 
         board = "github")
     log_info("pin indicatore_stress success")
@@ -257,7 +257,7 @@ tryCatch(
     output %>%
       filter(between(data, left = today() - 1, right = today() - 1)) %>%
       pin(
-        name = "graph-data/tabella_semplice",
+        name = "data/graph-data/tabella_semplice",
         description = "refresh data for tabella_semplice",
         board = "github")
     log_info("pin tabella_semplice success")
@@ -274,7 +274,7 @@ tryCatch(
     output %>%
       select(denominazione_regione, indicatore_stress) %>%
       pin(
-        name = "graph-data/mappa",
+        name = "data/graph-data/mappa",
         description = "refresh data for mappa",
         board = "github")
     log_info("pin mappa success")
@@ -295,7 +295,7 @@ tryCatch(
         incidenza
       ) %>%
       pin(
-        name = "graph-data/scatterplot",
+        name = "data/graph-data/scatterplot",
         description = "refresh data for scatterplot",
         board = "github")
     log_info("pin scatterplot success")
@@ -320,7 +320,7 @@ tryCatch(
     
     bind_cols(indicatore_t, indicatore_t1) %>% 
       pin(
-        name = "graph-data/arrow_plot",
+        name = "data/graph-data/arrow_plot",
         description = "refresh data for arrow_plot",
         board = "github")
     log_info("pin arrow_plot success")
@@ -346,7 +346,7 @@ tryCatch(
       ungroup() %>%
       filter(row_number() < n()) %>%
       pin(
-        name = "graph-data/time_series_per_settimana",
+        name = "data/graph-data/time_series_per_settimana",
         description = "refresh data for time_series_per_settimana",
         board = "github")
     log_info("pin time_series_per_settimana success")
@@ -369,7 +369,7 @@ tryCatch(
       group_by(data) %>%
       pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
       pin(
-        name = "graph-data/time_series_per_giorno",
+        name = "data/graph-data/time_series_per_giorno",
         description = "refresh data for time_series_per_giorno",
         board = "github")
     
