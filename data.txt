@@ -4,3 +4,9 @@
   cols: 31
   description: refresh data Indicatore Zona Gialla
   type: table
+- path: data/Indicatore Zona Gialla
+  name: data/Indicatore Zona Gialla
+  rows: 11676
+  cols: 31
+  description: refresh data Indicatore Zona Gialla
+  type: table
