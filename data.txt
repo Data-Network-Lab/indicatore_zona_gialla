@@ -46,3 +46,9 @@
   cols: 4
   description: refresh data for arrow_plot
   type: table
+- path: data/graph-data/time_series_per_settimana
+  name: data/graph-data/time_series_per_settimana
+  rows: 34
+  cols: 22
+  description: refresh data for time_series_per_settimana
+  type: table
