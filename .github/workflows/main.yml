@@ -22,25 +22,15 @@ jobs:
     - uses: r-lib/actions/setup-r@master
 
     # Set-up R
-    - name: Install packages
+    - name: install packages
       run: |
         R -e 'install.packages("renv")'
         R -e 'renv::restore()'
         
-        
 # Run pipeline
-    - name: Run Pipeline
+# and pinning data
+    - name: run pipeline
       run: Rscript code.R
-
-    # Commit new files
-    - name: Commit files
-      run: |
-        git config --local user.name github-actions
-        git config --local user.email "actions@github.com"
-        git add data/*
-        git add logging.log
-        git commit -am "GH ACTION Autorun $(date)"
-        git push origin logging
-      env:
-        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
-        username: github-actions
+      
+    - name: send log report
+      run: Rscript mail_script.R
