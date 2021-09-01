@@ -8,6 +8,10 @@ library(here)
 library(logger)
 library(tidyr)
 library(httr)
+library(pins)
+
+
+## board_register_github(repo = "Data-Network-Lab/indicatore_zona_gialla", branch = "pins")
 
 
 # 0 utils ----
@@ -40,8 +44,9 @@ check_url_status <- function(href) {
 
 # 1.0 urls, static files and params  ----
 
-log_appender(appender_file(file = "logging.log", append = TRUE))
 log_layout(layout_json())
+log_appender(appender_file(file = "logging.json", append = TRUE))
+
 
 urls <- list(
   url_incidenza <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",
@@ -50,7 +55,7 @@ urls <- list(
 )
 
 ## map check_url over urls
-map(urls, check_url_status)
+walk(urls, check_url_status)
 
 
 
@@ -231,15 +236,14 @@ tryCatch(
 
 tryCatch(
   {
-    write_csv(
-      x = output,
-      file = here("data", "indicatore_stress.csv"),
-      append = TRUE
-    )
-    log_info("write output success")
+    pin(output, 
+        name = "indicatore_stress", 
+        description = "refresh data for Indicatore_stress", 
+        board = "github")
+    log_info("pin indicatore_stress success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing indicatore_stress, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning Indicatore_stress, error: \n {e}]"))
   }
 )
 
@@ -247,41 +251,41 @@ tryCatch(
 # 6 Visualization Data ----
 
 
-## 6.1 tabella semplice
+## 6.1 tabella_semplice ----
 tryCatch(
   {
     output %>%
       filter(between(data, left = today() - 1, right = today() - 1)) %>%
-      write_csv(
-        file = here("data", "graph-data", "tabella_semplice.csv"),
-        append = TRUE
-      )
-    log_info("write tabella_semplice success")
+      pin(
+        name = "graph-data/tabella_semplice",
+        description = "refresh data for tabella_semplice",
+        board = "github")
+    log_info("pin tabella_semplice success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing tabella semplice, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning tabella semplice, error: \n {e}]"))
   }
 )
 
 
-## 6.2 mappa
+## 6.2 mappa ----
 tryCatch(
   {
     output %>%
       select(denominazione_regione, indicatore_stress) %>%
-      write_csv(
-        file = here("data", "graph-data", "mappa.csv"),
-        append = TRUE
-      )
-    log_info("write mappa success")
+      pin(
+        name = "graph-data/mappa",
+        description = "refresh data for mappa",
+        board = "github")
+    log_info("pin mappa success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing mappa, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning mappa, error: \n {e}]"))
   }
 )
 
 
-## 6.3 scatterplot
+## 6.3 scatterplot ----
 tryCatch(
   {
     output %>%
@@ -290,19 +294,19 @@ tryCatch(
         indicatore_stress,
         incidenza
       ) %>%
-      write_csv(
-        file = here("data", "graph-data", "scatterplot.csv"),
-        append = TRUE
-      )
-    log_info("write scatterplot success")
+      pin(
+        name = "graph-data/scatterplot",
+        description = "refresh data for scatterplot",
+        board = "github")
+    log_info("pin scatterplot success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while wrinting scatterplot, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning scatterplot, error: \n {e}]"))
   }
 )
 
 
-## 6.4 Arrow Plot
+## 6.4 arrow_plot ----
 tryCatch(
   {
     indicatore_t <- output %>%
@@ -315,19 +319,19 @@ tryCatch(
       head(21)
     
     bind_cols(indicatore_t, indicatore_t1) %>% 
-      write_csv(
-        file = here("data","graph-data", "arrow_plot.csv"),
-        append = TRUE
-      )
-    log_info("write arrow_plot success")
+      pin(
+        name = "graph-data/arrow_plot",
+        description = "refresh data for arrow_plot",
+        board = "github")
+    log_info("pin arrow_plot success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing arrowplot, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning arrow_plot, error: \n {e}]"))
   }
 )
 
 
-## 6.5 Time series (settimanale)
+## 6.5 time_series_per_settimana ----
 tryCatch(
   {
     output %>%
@@ -341,20 +345,20 @@ tryCatch(
       mutate(across(where(is.numeric), round, digits = 2)) %>%
       ungroup() %>%
       filter(row_number() < n()) %>%
-      write_csv(
-        file = here("data", "graph-data", "variazione_settimanale.csv"),
-        append = TRUE
-      )
-    log_info("write variazione_settimanale success")
+      pin(
+        name = "graph-data/time_series_per_settimana",
+        description = "refresh data for time_series_per_settimana",
+        board = "github")
+    log_info("pin time_series_per_settimana success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing variazione_settimanale, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning time_series_per_settimana, error: \n {e}]"))
   }
 )
 
 
 
-## 6.6 Time series (giornaliero)
+## 6.6 time_series_giornaliero -----
 last_days <- 10
 
 tryCatch(
@@ -364,15 +368,15 @@ tryCatch(
       tail(21 * last_days) %>%
       group_by(data) %>%
       pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
-      write_csv(
-        file = here("data", "graph-data", "variazione_giornaliera.csv"),
-        append = TRUE
-      )
+      pin(
+        name = "graph-data/time_series_per_giorno",
+        description = "refresh data for time_series_per_giorno",
+        board = "github")
     
-    log_info("write variazione_giornaliera success")
+    log_info("pin time_series_per_giorno success")
   },
   error = function(e) {
-    log_error(formatter_glue("message [something went wrong while writing variazione_giornaliera, error: \n {e}]"))
+    log_error(formatter_glue("message [something went wrong while pinning time_series_per_giorno, error: \n {e}]"))
   }
 )
 
