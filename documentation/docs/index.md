@@ -11,14 +11,12 @@ link-citations: yes
 # Welcome {.unnumbered}
 
 
-<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione online della **Documentazione** dedicata al progetto _Indicatore Zona Gialla_ (**IZG**). La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-08-05. 
+<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione 0.1 della **Documentazione** dedicata al progetto **Indicatore Zona Gialla** / **indicatore di stress**. La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-09-02. 
 
 
-La documentazione si oritenta a presentare gli obiettivi a lungo termine del progetto condiviso, oltre al continuo aggiornamento
-dell’indicatore 3.13 sono previsti l’ottimizzazione del flusso dei dati al fine di automatizzare la
-creazione del report e di una dashboard online aggiornata in tempo reale. Nello specifico, la
-presente proposta prevede la creazione e la predisposizione di una soluzione pilota per il
-calcolo dell’Indice di stress del Sistema Sanitario, rispetto ad un perimetro circoscritto di
+La documentazione si oritenta a presentare la metodologia di analisi per la creazione dell'indicatore, gli strumenti software e gli obiettivi di lungo termine del progetto condiviso.
+I principali obiettivi del progetto riguardano il continuo aggiornamento
+dell’indicatore (referenza) rispetto all'aggiornamento delle diverse sorgenti. A latere sono previsti l’ottimizzazione del flusso dei dati al fine di automatizzare la creazione del report e di un frontend amichevole che proietti i grafici in tempo reale. Nello specifico, la presente proposta prevede la creazione e la predisposizione di una soluzione pilota per il calcolo dell’Indice di stress del Sistema Sanitario, rispetto ad un perimetro circoscritto di
 indicatori (3.1 e 3.13 Cfr. Instant Report Altems) ed articolata nei seguenti step:
 
 - rielaborazione statistica ed analisi degli indicatori
