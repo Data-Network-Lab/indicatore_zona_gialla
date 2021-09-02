@@ -7,8 +7,6 @@ library(janitor)
 library(timetk)
 library(here)
 
-
-
 ## 0 utils ----
 ##  dplyr
 summarize_by_week <- function(.data, .date_var, ...) {
@@ -330,25 +328,3 @@ scatterplot = function(date_var, start = NULL, end = NULL) {
 }
 
 
-  
-
-
-
-
-# -.-.-.-.-.- Write ops -.-.-.-.-.-  # 
-
-
-#
-#
-# write_xlsx(
-#   list(
-#     input = input,
-#       suscettibili = suscettibili,
-#     soglia_effettiva = soglia_effettiva,
-#     soglia_equivalente = soglia_equivalente,
-#     rischio_zona_gialla = rischio_zona_gialla,
-#     all = risultati
-#   ),
-#   paste0("data/risultati-",Sys.Date(),"-",sample(10,1),".xlsx")
-# )
-#
