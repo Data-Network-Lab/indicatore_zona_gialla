@@ -13,3 +13,5 @@ flusso-dati
 example-one
 example-two
 final-words
+gruppo-di-lavoro-altems
+creazione-dellindicatore

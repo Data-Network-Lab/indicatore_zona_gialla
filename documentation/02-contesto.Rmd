@@ -1,5 +1,6 @@
 # Contesto {#contesto}
 
+Be aware that this documentation is currently under development.
 
 ## Contesto del Progetto 
 
@@ -7,7 +8,7 @@ L’Alta Scuola di Economia e Management dei Sistemi Sanitari (**<span style="co
 della Facoltà di Medicina e Chirurgia diffonde settimanalmente l’Instant Report COVID-19, un’iniziativa che offre un confronto sistematico delle modalità di risposta delle Regioni italiane al Sars-COV-2. Il Report si basa su un set di indicatori costruito per monitorare l’evoluzione della pandemia nella “Fase 2”, formalmente avviata il 4 maggio con la conclusione del lockdown nazionale. Al fianco dei nuovi indicatori, il Rapporto continua ad offrire l’aggiornamento di alcuni indicatori selezionati tra quelli che hanno caratterizzato il modello di risposta delle Regioni nella fase 1. L’analisi riguarda tutte le 21 Regioni e Province Autonome italiane.
 
 
-## Gruppo di Lavoro
+## Gruppo di Lavoro ALTEMS
 
 Il gruppo di lavoro è coordinato da **Americo Cicchetti**, Professore Ordinario di Organizzazione Aziendale presso la Facoltà di Economia dell’Università Cattolica del Sacro Cuore si avvale della advisorship scientifica del Prof. **Gianfranco Damiani** e della Dott.ssa **Maria Lucia Specchia** della Sezione di Igiene - Dipartimento di Scienze della Vita e Sanità Pubblica. A partire dal Report #4 la collaborazione si è estesa al Centro di Ricerca e Studi in Management Sanitario dell’Università Cattolica (Prof. **Eugenio Anessi Pessina**), al Centro di Ricerca e Studi sulla Leadership in Medicina dell’Università Cattolica (Prof. **Walter Ricciardi**) e al Gruppo di Organizzazione dell’Università Magna Græcia di Catanzaro (Prof. **Rocco Reina**). Il team multidisciplinare è composto da economisti e aziendalisti sanitari, medici di sanità pubblica, ingegneri informatici, psicologi e statistici.
 

@@ -1,8 +1,13 @@
 # Indicatore Zona Gialla
 
-Il presente step ha l’obiettivo di analizzare il lavoro svolto attualmente per la produzione
-della reportistica, prendendo in considerazione **sorgenti dati**, strumenti di manipolazione dati
-utilizzati e caratteristiche di visualizzazione. 
+
+Be aware that this documentation is currently under development.
+
+## Creazione dell'indicatore
+
+
+L'indicatore è costruito a partire dall'incrocio dei dati 
+
 
 ## Roadstart
 

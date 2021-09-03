@@ -11,7 +11,7 @@ link-citations: yes
 # Welcome {.unnumbered}
 
 
-<img src="images/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione 0.1 della **Documentazione** dedicata al progetto **Indicatore Zona Gialla** / **indicatore di stress**. La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-09-02. 
+<img src="../img/apple-touch-icon.png" class="cover" width="120" height="120"/> Questa è la versione 0.1 della **Documentazione** dedicata al progetto **Indicatore Zona Gialla** / **indicatore di stress**. La documentazione è tuttora in revisione, l'ultima data di rilascio è 2021-09-03. 
 
 
 La documentazione si oritenta a presentare la metodologia di analisi per la creazione dell'indicatore, gli strumenti software e gli obiettivi di lungo termine del progetto condiviso.

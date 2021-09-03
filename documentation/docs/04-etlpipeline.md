@@ -9,8 +9,7 @@ Software:
 - R statistical language
   - {Tidyerse} [@tidyverse]
   - bookdown [@bookdown2016]
-  - Rmarkdown
-  - 
+  - Rmarkdown 
 
 
 
