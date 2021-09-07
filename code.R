@@ -233,8 +233,7 @@ tryCatch(
   {
     write_csv(
       x = output,
-      file = here("data", "indicatore_stress.csv"),
-      append = TRUE
+      file = here("data", "indicatore_stress.csv")
     )
     log_info("write output success")
   },
@@ -246,15 +245,13 @@ tryCatch(
 
 # 6 Visualization Data ----
 
-
 ## 6.1 tabella semplice
 tryCatch(
   {
     output %>%
-      filter(between(data, left = today() - 1, right = today() - 1)) %>%
+      tail(21) %>% 
       write_csv(
-        file = here("data", "graph-data", "tabella_semplice.csv"),
-        append = TRUE
+        file = here("data", "graph-data", "tabella_semplice.csv")
       )
     log_info("write tabella_semplice success")
   },
@@ -270,8 +267,7 @@ tryCatch(
     output %>%
       select(denominazione_regione, indicatore_stress) %>%
       write_csv(
-        file = here("data", "graph-data", "mappa.csv"),
-        append = TRUE
+        file = here("data", "graph-data", "mappa.csv")
       )
     log_info("write mappa success")
   },
@@ -285,14 +281,18 @@ tryCatch(
 tryCatch(
   {
     output %>%
+      tail(21) %>% 
       select(
         denominazione_regione,
         indicatore_stress,
-        incidenza
-      ) %>%
+        incidenza, 
+        vaccinati,
+        popolazione
+      ) %>% 
+      mutate(vaccinati_perc = vaccinati/popolazione,
+             vaccinati_perc = round(vaccinati_perc, digits = 4)*100) %>% 
       write_csv(
-        file = here("data", "graph-data", "scatterplot.csv"),
-        append = TRUE
+        file = here("data", "graph-data", "scatterplot.csv")
       )
     log_info("write scatterplot success")
   },
@@ -316,8 +316,7 @@ tryCatch(
     
     bind_cols(indicatore_t, indicatore_t1) %>% 
       write_csv(
-        file = here("data","graph-data", "arrow_plot.csv"),
-        append = TRUE
+        file = here("data","graph-data", "arrow_plot.csv")
       )
     log_info("write arrow_plot success")
   },
@@ -342,8 +341,7 @@ tryCatch(
       ungroup() %>%
       filter(row_number() < n()) %>%
       write_csv(
-        file = here("data", "graph-data", "variazione_settimanale.csv"),
-        append = TRUE
+        file = here("data", "graph-data", "variazione_settimanale.csv")
       )
     log_info("write variazione_settimanale success")
   },
@@ -355,7 +353,7 @@ tryCatch(
 
 
 ## 6.6 Time series (giornaliero)
-last_days <- 10
+last_days <- 60
 
 tryCatch(
   {
@@ -365,8 +363,7 @@ tryCatch(
       group_by(data) %>%
       pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
       write_csv(
-        file = here("data", "graph-data", "variazione_giornaliera.csv"),
-        append = TRUE
+        file = here("data", "graph-data", "variazione_giornaliera.csv")
       )
     
     log_info("write variazione_giornaliera success")
@@ -375,4 +372,7 @@ tryCatch(
     log_error(formatter_glue("message [something went wrong while writing variazione_giornaliera, error: \n {e}]"))
   }
 )
+
+
+## riga italia total
 
