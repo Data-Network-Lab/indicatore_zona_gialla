@@ -5,13 +5,12 @@ data-network-match
 un-po-di-storia-recente
 contesto
 contesto-del-progetto
-gruppo-di-lavoro
+gruppo-di-lavoro-altems
 finalità-e-proposta
 indicatore-zona-gialla
+creazione-dellindicatore
 roadstart
 flusso-dati
 example-one
 example-two
 final-words
-gruppo-di-lavoro-altems
-creazione-dellindicatore
