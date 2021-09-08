@@ -40,7 +40,7 @@ check_url_status <- function(href) {
 
 # 1.0 urls, static files and params  ----
 
-log_appender(appender_file(file = "logging.log", append = TRUE))
+log_appender(appender_file(file = "logging.json", append = TRUE))
 log_layout(layout_json())
 
 urls <- list(
@@ -50,36 +50,57 @@ urls <- list(
 )
 
 ## map check_url over urls
-map(urls, check_url_status)
+walk(urls, check_url_status)
 
 
 
-static_data <- read_excel(here("data", "data-raw", "static_data.xlsx"))
+## dati popolazione PL area non critica, PL terapia intensiva
+## regione a statuto speciale P.A. Trento e P.A. Bolzano
+## https://it.wikipedia.org/wiki/Regione_italiana_a_statuto_speciale#:~:text=Cinque%20regioni%20italiane%20sono%20chiamate,116%20della%20Costituzione).
+## aggiornata a cr. 2019
+
+tryCatch(
+  {
+    static_data <- read_excel(here("data", "data-raw", "static_data.xlsx")) %>% 
+      add_row(denominazione_regione = "Italia",
+              PL_area_non_critica = sum(.$PL_area_non_critica),
+              PL_terapia_intensiva = sum(.$PL_terapia_intensiva),
+              popolazione = sum(.$popolazione)
+              )
+    log_info("read static_data success")
+  },
+  error = function(e) {
+    log_error(formatter_glue("something went wrong with static_data, error: {e}"))
+  }
+)
 
 
+
+## params
 delta <- 7
 efficacia <- 0.95
 
 
-
-# 2.0 dati_statistici_riferimento prepped   ----
-# (4 months ago)
-tryCatch(
-  {
-    dati_statistici_riferimento <- 
-    read_csv(pluck(urls, 2), show_col_types = FALSE) %>%
-      count(denominazione_regione,
-            wt = totale_generale,
-            name = "popolazione_totale",
-            sort = T
-      )
-    log_info("read dati_statistici_riferimento success")
-  },
-  error = function(e) {
-    log_error(formatter_glue("something went wrong with dati_statistici_riferimento, error: {e}"))
-    
-  }
-)
+# 
+# # 2.0 dati_statistici_riferimento prepped   ----
+# # (4 months ago)
+# tryCatch(
+#   {
+#     dati_statistici_riferimento <- 
+#     read_csv(pluck(urls, 2), show_col_types = FALSE) %>%
+#       count(denominazione_regione,
+#             wt = totale_generale,
+#             name = "popolazione_totale",
+#             sort = T
+#       ) %>% 
+#       add_row(denominazione_regione = "Italia", popolazione_totale = sum(.$popolazione_totale))
+#     log_info("read dati_statistici_riferimento success")
+#   },
+#   error = function(e) {
+#     log_error(formatter_glue("something went wrong with dati_statistici_riferimento, error: {e}"))
+#     
+#   }
+# )
 
 # 3 Incidenza ----
 tryCatch(
@@ -91,7 +112,8 @@ tryCatch(
           mutate(
             data = str_extract(data, "([^\\s]+)"),
             data = ymd(data)
-          )
+          ) 
+        
         log_info("prep Incidenza success")
       },
       message = function(cnd) log_warn("message [{cnd$message}]")
@@ -106,6 +128,14 @@ tryCatch(
 tryCatch(
   {
     incidenza_per_settimana <- incidenza_prepped %>%
+      split(incidenza_prepped$data) %>% 
+      map_df(~ add_row(.x,
+                       data = .x$data[1],
+                       denominazione_regione = "Italia",
+                       totale_casi = sum(.x$totale_casi),
+                       terapia_intensiva = sum(.x$terapia_intensiva),
+                       ricoverati_con_sintomi = sum(.x$ricoverati_con_sintomi)
+      )) %>% 
       group_by(denominazione_regione) %>%
       mutate(
         totale_casi_lag = lag(totale_casi, n = delta),
@@ -119,7 +149,6 @@ tryCatch(
     
   }
 )
-
 
 
 
@@ -146,7 +175,9 @@ tryCatch(
           mutate(totale = case_when(
             fornitore == "Janssen" ~ prima_dose + pregressa_infezione,
             TRUE ~ seconda_dose + pregressa_infezione
-          ))
+          )) %>% 
+          ungroup()
+        
         log_info("prep Vaccini success")
       },
       message = function(cnd) log_warn("message [{cnd$message}]")
@@ -162,6 +193,15 @@ tryCatch(
     withCallingHandlers(
       {
         vaccini_per_settimana <- vaccini_prepped %>%
+          split(vaccini_prepped$data) %>% 
+          map_df(~ add_row(.x,
+                           data = .x$data[1],
+                           denominazione_regione = "Italia",
+                           prima_dose = sum(.x$prima_dose),
+                           seconda_dose = sum(.x$seconda_dose),
+                           pregressa_infezione = sum(.x$pregressa_infezione),
+                           totale = sum(.x$totale)
+          )) %>% 
           group_by(data, denominazione_regione) %>%
           summarise(nuovi_vaccinati = sum(totale)) %>%
           group_by(denominazione_regione) %>%
@@ -178,13 +218,15 @@ tryCatch(
 
 
 # 5 output ----
+# frequenza di aggiornamento dei vaccini è in ritardo rispetto a quella dell'incidenza
 tryCatch(
   {
     withCallingHandlers(
       {
         output <- incidenza_per_settimana %>%
           left_join(static_data) %>%
-          left_join(vaccini_per_settimana) %>%
+          ## moved to right join
+          right_join(vaccini_per_settimana) %>%
           mutate(
             incidenza = incremento / (popolazione / 100000),
             saturazione_ti = terapia_intensiva / PL_terapia_intensiva,
@@ -207,6 +249,7 @@ tryCatch(
             indicatore_stress = (incidenza) / soglia_50_equivalente
           ) %>%
           mutate(across(where(is.numeric), round, digits = 2))
+        
         log_info("prep indicatore-stress success")
       },
       message = function(cnd) log_warn("message [{cnd$message}]")
@@ -216,18 +259,6 @@ tryCatch(
     log_error(formatter_glue("message [something went wrong while joining tables, error: \n {e}]"))
   }
 )
-
-
-
-## TODO add_totals per week
-# output <- output %>%
-#   bind_rows(
-#     output %>%
-#       group_by(data) %>%
-#       summarise(across(where(is.numeric), ~ sum(.x, na.rm = TRUE))) %>%
-#       mutate("cyl" = "Total")
-#   )
-
 
 tryCatch(
   {
@@ -249,7 +280,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
-      tail(21) %>% 
+      tail(22) %>% 
       write_csv(
         file = here("data", "graph-data", "tabella_semplice.csv")
       )
@@ -265,6 +296,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
+      tail(22) %>% 
       select(denominazione_regione, indicatore_stress) %>%
       write_csv(
         file = here("data", "graph-data", "mappa.csv")
@@ -281,7 +313,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
-      tail(21) %>% 
+      tail(22) %>% 
       select(
         denominazione_regione,
         indicatore_stress,
@@ -307,12 +339,12 @@ tryCatch(
   {
     indicatore_t <- output %>%
       select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) %>%
-      tail(21)
+      tail(22)
     
     indicatore_t1 <- output %>%
       select(indicatore_stress_t1 = indicatore_stress) %>%
-      tail(42) %>%
-      head(21)
+      tail(44) %>%
+      head(22)
     
     bind_cols(indicatore_t, indicatore_t1) %>% 
       write_csv(
@@ -359,7 +391,7 @@ tryCatch(
   {
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
-      tail(21 * last_days) %>%
+      tail(22 * last_days) %>%
       group_by(data) %>%
       pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
       write_csv(
@@ -374,5 +406,4 @@ tryCatch(
 )
 
 
-## riga italia total
 
