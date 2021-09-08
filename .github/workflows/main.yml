@@ -25,11 +25,14 @@ jobs:
       run: |
         R -e 'install.packages("stringr")'
         R -e 'install.packages("dplyr")'
+        R -e 'install.packages("purrr")'
         R -e 'install.packages("readxl")'
         R -e 'install.packages("readr")'
         R -e 'install.packages("lubridate")'
         R -e 'install.packages("here")'
-        R -e 'install.packages("writexl")'
+        R -e 'install.packages("logger")'
+        R -e 'install.packages("tidyr")'
+        R -e 'install.packages("httr")'
         
 # Run pipeline
     - name: Run Pipeline
@@ -41,6 +44,7 @@ jobs:
         git config --local user.name github-actions
         git config --local user.email "actions@github.com"
         git add data/*
+        git add logging.json
         git commit -am "GH ACTION Autorun $(date)"
         git push origin main
       env:
