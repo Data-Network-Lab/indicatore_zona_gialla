@@ -2,13 +2,12 @@
 name: refresh_data
 
 #  Controls when the action will run.
-#  “every 3 hours”
+#  “At 08:00 on every day-of-week from Monday through Sunday.”
 #  https://crontab.guru/
+#  On push for testin purpose
 on:
-  # schedule:
-  #   - cron:  '0 */3 * * * '
-  # push:
-  #   branches: logging
+  schedule:
+    - cron:  '0 */6 * * *'
 
 
 jobs: 
@@ -24,9 +23,13 @@ jobs:
     # Set-up R
     - name: Install packages
       run: |
-        R -e 'install.packages("renv")'
-        R -e 'renv::restore()'
-        
+        R -e 'install.packages("stringr")'
+        R -e 'install.packages("dplyr")'
+        R -e 'install.packages("readxl")'
+        R -e 'install.packages("readr")'
+        R -e 'install.packages("lubridate")'
+        R -e 'install.packages("here")'
+        R -e 'install.packages("writexl")'
         
 # Run pipeline
     - name: Run Pipeline
@@ -38,9 +41,8 @@ jobs:
         git config --local user.name github-actions
         git config --local user.email "actions@github.com"
         git add data/*
-        git add logging.log
         git commit -am "GH ACTION Autorun $(date)"
-        git push origin logging
+        git push origin main
       env:
         REPO_KEY: ${{secrets.GITHUB_TOKEN}}
         username: github-actions
