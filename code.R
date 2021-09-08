@@ -368,7 +368,7 @@ tryCatch(
       group_by(week, denominazione_regione) %>%
       summarise(media_indicatore_stress = mean(indicatore_stress)) %>%
       drop_na() %>%
-      pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = media_indicatore_stress) %>%
+      pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
       mutate(across(where(is.numeric), round, digits = 2)) %>%
       ungroup() %>%
       filter(row_number() < n()) %>%
@@ -393,7 +393,7 @@ tryCatch(
       select(data, denominazione_regione, indicatore_stress) %>%
       tail(22 * last_days) %>%
       group_by(data) %>%
-      pivot_wider(names_from = denominazione_regione, names_prefix = "regione ", values_from = indicatore_stress) %>%
+      pivot_wider(names_from = denominazione_regione, values_from = indicatore_stress) %>%
       write_csv(
         file = here("data", "graph-data", "variazione_giornaliera.csv")
       )
