@@ -281,6 +281,23 @@ tryCatch(
   {
     output %>%
       tail(22) %>% 
+      rename(
+        "Indicatore Stress" = indicatore_stress,
+        "Regione"           = denominazione_regione,
+        "Totale Casi"       = totale_casi,
+        "Casi TI"           = terapia_intensiva,
+        "Ricoverati con Sintomi" = ricoverati_con_sintomi,
+        "Totale Casi (lag)" = totale_casi_lag,
+        "Incremento (unità)" = incremento,
+        "PL area non critica" = PL_area_non_critica,
+        "PL TI" = PL_terapia_intensiva,
+        "Popolazione" = popolazione,
+        "Nuovi Vaccinati" = nuovi_vaccinati,
+        "Vaccinati" = vaccinati,
+        "Saturazione TI" = saturazione_ti,
+        "Saturazione area non critica" = saturazione_area_non_critica,
+        "Indicatore di Stress" = indicatore_stress
+      ) %>% 
       write_csv(
         file = here("data", "graph-data", "tabella_semplice.csv")
       )
@@ -323,6 +340,8 @@ tryCatch(
       ) %>% 
       mutate(vaccinati_perc = vaccinati/popolazione,
              vaccinati_perc = round(vaccinati_perc, digits = 4)*100) %>% 
+      rename("Vaccinati (%)" = vaccinati_perc,
+             "Incidenza (100'000 abitanti)" = incidenza) %>% 
       write_csv(
         file = here("data", "graph-data", "scatterplot.csv")
       )
@@ -359,6 +378,7 @@ tryCatch(
 
 
 ## 6.5 Time series (settimanale)
+
 tryCatch(
   {
     output %>%
@@ -371,7 +391,7 @@ tryCatch(
       pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
       mutate(across(where(is.numeric), round, digits = 2)) %>%
       ungroup() %>%
-      filter(row_number() < n()) %>%
+      filter(row_number() < n()) %>% 
       write_csv(
         file = here("data", "graph-data", "variazione_settimanale.csv")
       )
@@ -392,8 +412,8 @@ tryCatch(
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
       tail(22 * last_days) %>%
-      group_by(data) %>%
-      pivot_wider(names_from = denominazione_regione, values_from = indicatore_stress) %>%
+      group_by(data) %>% 
+      pivot_wider(names_from = denominazione_regione, values_from = indicatore_stress, names_sort = T)
       write_csv(
         file = here("data", "graph-data", "variazione_giornaliera.csv")
       )
