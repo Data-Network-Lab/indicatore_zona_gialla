@@ -31,7 +31,7 @@ major revision_
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Contribute and Conduct](#contribute-and-conduct)
--   [Sponsors](#sponsor)
+-   [Sponsors](#sponsors)
 -   [License](#license)
 
 
@@ -44,17 +44,17 @@ major revision_
 
 The project is articulated into 3 parts:
 
--   create a new KPI i.e. Indicatore di Stress Regionale
+-   create a new KPI i.e. **Indicatore di Stress** Regionale
 -   articulated **ETL** (Extraction, Trasnformation & Loading) pipeline sourcing and merging (then computing Indicatore di Stress) 3 data Sources
 -   visualize & builf frontend with [DataWrapper])(https://www.datawrapper.de/) on the aggregated data
 
-the newly created Indicatore di Stress will be measuring the overall *stress* of our SSN (Servizio
-Sanitario Nazionale) which is the results of a combination of the
-**vaccination** and **incidence** effect per region. Both of the 2 dimensions can reflect hospital **saturation** and define
+the newly created **Indicatore di Stress** will be measuring the overall *stress* undertaken by the SSN (Servizio
+Sanitario Nazionale e.g. italian NHS) which results in a combination of the
+**Vaccination** and the **Incidence** effects computed per region. Both of the 2 dimensions can reflect hospital **Saturation** and define
 criteria according to which regions are put into either yellow, organge or red zones (_Zona Gialla_, _Zona Arancione_ e _Zona Rossa_) in compliance with the most
 recent orders (D.L. 52/2021). This presumably will help decision makers to adjust the
 obsolete thresholds set prior the vaccination campaign and ultimately might give a neat undestranding of the current situation and
-an **updated perspective** on the future scenarios.
+an **updated perspective** on future scenarios.
 
 The **etl pipeline** joins and cleans up 3 data sources:
 
@@ -67,8 +67,6 @@ The **etl pipeline** joins and cleans up 3 data sources:
 
 Data is extracted, cleanded and aggregated every **6 hours**. At the end of the pipeline within the **./data** folder the output file is written in a .csv format.
 Methodology and software choices are outlined in the documentation which is currently under _major revision_
-
-
 
 ![etl pipeline](img/etl_diagram.png)
 
@@ -140,10 +138,10 @@ By contributing to this project, you agree to abide by its terms.
 
 [(Back to top)](#table-of-contents)
 
-The project sponsor is **ALTEMS** but if your are planning to support
-our work as well feel free to tap the button and donate. If you are
-interested to be contacted for future works or collaboration please feel
-free too to PM us @ <datanetworkxyz@gmail.com>
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N83TE3Z)
+
+The project is sponsored by **ALTEMS** (Alta Scuola di Economia e Management dei Sistemi Sanitari ), but if you too are willing to support
+our open source work tap the button above or simply donate at the link you find in the upper right hand site of this repo (i.e. [DN donations](https://datanetwork.xyz/donazioni/)). If you are interested to be contacted for future works or collaboration please reach out at @ <datanetworkxyz@gmail.com> for any sort of enquiry or question you might bump into.
 
 ## License
 
