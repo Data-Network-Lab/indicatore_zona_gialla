@@ -8,8 +8,6 @@
 
 [![refresh\_data](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/Data-Network-Lab/indicatore_zona_gialla/actions/workflows/main.yml)
 
-![GitHub release (latest by date including
-pre-releases)](https://img.shields.io/github/v/release/Data-Network-Lab/indicatore_zona_gialla?style=plastic?include_prereleases)
 ![GitHub last
 commit](https://img.shields.io/github/last-commit/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 ![GitHub
@@ -20,24 +18,45 @@ forks](https://img.shields.io/github/forks/Data-Network-Lab/indicatore_zona_gial
 license](https://img.shields.io/github/license/Data-Network-Lab/indicatore_zona_gialla?style=plastic)
 
 <!-- badges: end -->
-<!-- Describe your project in brief -->
+
+## [Table of contents](#table-of-contents)
+
+Here there are a few topics covered within this repo. A more indeep
+explanation of resuls and methodologies as well as the tech stack is offered in the [project
+documentation](https://altems-documentation.netlify.app/) _under
+major revision_
+
+-   [Description](#description)
+-   [Demo Preview](#demo-preview)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [Contribute and Conduct](#contribute-and-conduct)
+-   [Sponsors](#sponsor)
+-   [License](#license)
+
+
 
 ## Description
 
+[(Back to top)](#table-of-contents)
+
+<!-- Describe your project in brief -->
+
 The project is articulated into 3 parts:
 
--   set new KPI
--   **etl** pipeline
--   data visualizations & frontend
+-   create a new KPI i.e. Indicatore di Stress Regionale
+-   articulated **ETL** (Extraction, Trasnformation & Loading) pipeline sourcing and merging (then computing Indicatore di Stress) 3 data Sources
+-   visualize & builf frontend with [DataWrapper])(https://www.datawrapper.de/) on the aggregated data
 
-the new KPI will be measuring the overall *stress* of our SSN (Servizio
+the newly created Indicatore di Stress will be measuring the overall *stress* of our SSN (Servizio
 Sanitario Nazionale) which is the results of a combination of the
-**vaccination** and hospital **saturation** effects according to most
-recent orders (D.L. 52/2021). This presumably will help to readjust the
-thresholds set prior the vaccination campaign and ultimately might give
-an updated perspective of the actual and future situation.
+**vaccination** and **incidence** effect per region. Both of the 2 dimensions can reflect hospital **saturation** and define
+criteria according to which regions are put into either yellow, organge or red zones (_Zona Gialla_, _Zona Arancione_ e _Zona Rossa_) in compliance with the most
+recent orders (D.L. 52/2021). This presumably will help decision makers to adjust the
+obsolete thresholds set prior the vaccination campaign and ultimately might give a neat undestranding of the current situation and
+an **updated perspective** on the future scenarios.
 
-then the **etl pipeline** joins and cleans up data from these 3 sources:
+The **etl pipeline** joins and cleans up 3 data sources:
 
 -   [pcm-dpc, dati
     regioni](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv)
@@ -46,43 +65,32 @@ then the **etl pipeline** joins and cleans up data from these 3 sources:
 -   [COVID 19 open data vaccini, somministrazioni
     vaccini](https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv)
 
+Data is extracted, cleanded and aggregated every **6 hours**. At the end of the pipeline within the **./data** folder the output file is written in a .csv format.
+Methodology and software choices are outlined in the documentation which is currently under _major revision_
+
+
+
 ![etl pipeline](img/etl_diagram.png)
 
-In the end visualization (maps, barcharts & arrowplots) are made with
-[Datawrapper](https://www.datawrapper.de/) and nested within a simple
-frontend:
+Visualizations (barcharts, arrowplots, custom tables and more) are made with 
+[Datawrapper](https://www.datawrapper.de/) whose data source points to the urls at **./data/data-graph**.
 
 ![visualization](img/vsiual_diagram.png)
 
 ## Demo-Preview
 
+[(Back to top)](#table-of-contents)
+
 <!-- Add a demo for your project -->
-in progres…
+
+in progress…
 <p align="center">
 <img width="100" height="100" src="img/loading.gif">
 </p>
 
-## Table of contents
 
-Here there is a brief overview about the project, a more indeep
-explanation of resuls and methodologies is offered in the [project
-documentation](https://altems-documentation.netlify.app/) (under
-maintenance)
 
--   [Project Title](#project-title)
--   [Demo-Preview](#demo-preview)
--   [Table of contents](#table-of-contents)
--   [Installation](#installation)
--   [Usage](#usage)
--   [Development](#development)
--   [Contribute and Conduct](#contribute-and-conduct)
-    -   [Sponsor](#sponsor)
-    -   [Adding new features or fixing
-        bugs](#adding-new-features-or-fixing-bugs)
--   [License](#license)
--   [Footer](#footer)
-
-# Installation
+## Installation
 
 [(Back to top)](#table-of-contents)
 
@@ -96,7 +104,7 @@ github:
 
 `git clone https://github.com/Data-Network-Lab/indicatore_zona_gialla.git`
 
-Then once you have copied this repo on your computer execute:
+Then once you have cloned this repo on your machine you might execute:
 
 ``` r
 if(!require(renv)){
@@ -128,7 +136,7 @@ Please note that the indicatore\_zona\_gialla project is released with a
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
-## Sponsor
+## Sponsors
 
 [(Back to top)](#table-of-contents)
 
@@ -136,6 +144,12 @@ The project sponsor is **ALTEMS** but if your are planning to support
 our work as well feel free to tap the button and donate. If you are
 interested to be contacted for future works or collaboration please feel
 free too to PM us @ <datanetworkxyz@gmail.com>
+
+## License
+
+[(Back to top)](#table-of-contents)
+
+Please visit the LICENSE.md file.
 
 <!-- Add the footer here -->
 
