@@ -1,4 +1,4 @@
-denominazione_regione,indicatore_stress,incidenza,vaccinati,popolazione,vaccinati_perc
+denominazione_regione,indicatore_stress,Incidenza (100'000 abitanti),vaccinati,popolazione,Vaccinati (%)
 Abruzzo,0.32,46.61,885920,1285256,68.93
 Basilicata,0.43,57.16,357719,547579,65.33
 Calabria,0.77,92.08,1151743,1877728,61.339999999999996
