@@ -384,8 +384,8 @@ tryCatch(
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
       mutate(week = week(data)) %>%
-      ## dev choice to start from 2021
-      filter(between(data, left = ymd("2021-01-01"), right = today())) %>%
+      ## dev choice to start from April, 1st 2021
+      filter(between(data, left = ymd("2021-04-01"), right = today())) %>%
       group_by(week, denominazione_regione) %>%
       summarise(media_indicatore_stress = mean(indicatore_stress)) %>%
       drop_na() %>%
