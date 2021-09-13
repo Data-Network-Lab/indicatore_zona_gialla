@@ -43,16 +43,15 @@ major revision_
 
 The project is articulated into 3 parts:
 
--   create a new KPI i.e. **Indicatore di Stress** Regionale
--   articulated **ETL** (Extraction, Trasnformation & Loading) pipeline sourcing and merging (then computing Indicatore di Stress) 3 data Sources
--   visualize & builf frontend with [DataWrapper])(https://www.datawrapper.de/) on the aggregated data
+-   set up a new KPI i.e. **Indicatore di Stress** Regionale
+-   build ab **ETL** (Extraction, Trasnformation & Loading) pipeline sourcing and merging (then computing Indicatore di Stress) 3 data Sources
+-   visualize & design a frontend with [DataWrapper])(https://www.datawrapper.de/) based on aggregated data
 
 the newly created **Indicatore di Stress** will be measuring the overall *stress* undertaken by the SSN (Servizio
 Sanitario Nazionale e.g. italian NHS) which results in a combination of the
 **Vaccination** and the **Incidence** effects computed per region. Both of the 2 dimensions can reflect hospital **Saturation** and define
-criteria according to which regions are put into either yellow, organge or red zones (_Zona Gialla_, _Zona Arancione_ e _Zona Rossa_) in compliance with the most
-recent orders (D.L. 52/2021). This presumably will help decision makers to adjust the
-obsolete thresholds set prior the vaccination campaign and ultimately might give a neat undestranding of the current situation and
+criteria according to which regions are labelled as either yellow, orange or red zones (_Zona Gialla_, _Zona Arancione_ e _Zona Rossa_), in compliance with the most
+recent orders (D.L. 52/2021). This presumably will help decision makers have a neat undestranding of the current situation and
 an **updated perspective** on future scenarios.
 
 The **etl pipeline** joins and cleans up 3 data sources:
