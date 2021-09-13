@@ -40,7 +40,7 @@ check_url_status <- function(href) {
 
 # 1.0 urls, static files and params  ----
 
-log_appender(appender_file(file = "logging.json", append = TRUE))
+log_appender(appender_file(file = "logs.json", append = TRUE))
 log_layout(layout_json())
 
 urls <- list(
@@ -280,7 +280,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
-      tail(22) %>% 
+      filter(data == today()-2) %>% 
       rename(
         "Indicatore Stress" = indicatore_stress,
         "Regione"           = denominazione_regione,
@@ -313,7 +313,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
-      tail(22) %>% 
+      filter(data == today()-2) %>% 
       select(denominazione_regione, indicatore_stress) %>%
       write_csv(
         file = here("data", "graph-data", "mappa.csv")
@@ -330,7 +330,7 @@ tryCatch(
 tryCatch(
   {
     output %>%
-      tail(22) %>% 
+      filter(data == today()-2) %>% 
       select(
         denominazione_regione,
         indicatore_stress,
@@ -357,15 +357,15 @@ tryCatch(
 tryCatch(
   {
     indicatore_t <- output %>%
-      select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) %>%
-      tail(22)
+      filter(data == today()-2) %>% 
+      select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) 
     
     indicatore_t1 <- output %>%
-      select(indicatore_stress_t1 = indicatore_stress) %>%
-      tail(44) %>%
-      head(22)
+      filter(data == today()-3) %>% 
+      select(denominazione_regione, indicatore_stress_t1 = indicatore_stress) 
+      
     
-    bind_cols(indicatore_t, indicatore_t1) %>% 
+    right_join(indicatore_t, indicatore_t1, by = "denominazione_regione") %>% 
       write_csv(
         file = here("data","graph-data", "arrow_plot.csv")
       )
@@ -384,12 +384,16 @@ tryCatch(
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
       mutate(week = week(data)) %>%
+      ## dev choice to start from 2021
       filter(between(data, left = ymd("2021-01-01"), right = today())) %>%
       group_by(week, denominazione_regione) %>%
       summarise(media_indicatore_stress = mean(indicatore_stress)) %>%
       drop_na() %>%
       pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
-      mutate(across(where(is.numeric), round, digits = 2)) %>%
+      mutate(
+        across(where(is.numeric), round, digits = 2),
+        week = as.Date(paste("2021", week, 1, sep = "-"), format = "%Y-%U-%u")
+             ) %>%
       ungroup() %>%
       filter(row_number() < n()) %>% 
       write_csv(
@@ -411,9 +415,9 @@ tryCatch(
   {
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
-      tail(22 * last_days) %>%
+      filter(between(data, right = today()-2, left = today() - last_days)) %>%
       group_by(data) %>% 
-      pivot_wider(names_from = denominazione_regione, values_from = indicatore_stress, names_sort = T)
+      pivot_wider(names_from = denominazione_regione, values_from = indicatore_stress, names_sort = T) %>% 
       write_csv(
         file = here("data", "graph-data", "variazione_giornaliera.csv")
       )
