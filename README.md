@@ -27,7 +27,6 @@ documentation](https://altems-documentation.netlify.app/) _under
 major revision_
 
 -   [Description](#description)
--   [Demo Preview](#demo-preview)
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Contribute and Conduct](#contribute-and-conduct)
@@ -74,18 +73,6 @@ Visualizations (barcharts, arrowplots, custom tables and more) are made with
 [Datawrapper](https://www.datawrapper.de/) whose data source points to the urls at **./data/data-graph**.
 
 ![visualization](img/vsiual_diagram.png)
-
-## Demo-Preview
-
-[(Back to top)](#table-of-contents)
-
-<!-- Add a demo for your project -->
-
-in progress…
-<p align="center">
-<img width="100" height="100" src="img/loading.gif">
-</p>
-
 
 
 ## Installation
