@@ -1,7 +1,4 @@
 denominazione_regione,indicatore_stress
-Sardegna,0.46
-Sicilia,1.14
-Toscana,0.61
 Umbria,0.45
 Valle d'Aosta,0.14
 Veneto,0.59
@@ -9,11 +6,14 @@ Italia,0.44
 Abruzzo,0.31
 Basilicata,0.39
 Calabria,0.74
-Emilia-Romagna,0.52
+Emilia-Romagna,0.51
 Friuli Venezia Giulia,0.51
 Lazio,0.27
+Liguria,0.37
 Lombardia,0.23
 Marche,0.46
+Molise,0.12
+P.A. Trento,0.31
 Piemonte,0.27
 Puglia,0.21
 Sardegna,0.43
