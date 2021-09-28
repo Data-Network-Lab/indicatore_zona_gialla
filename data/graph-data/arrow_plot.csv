@@ -5,7 +5,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2021-09-26,Campania,0.28,0.29
 2021-09-26,Emilia-Romagna,0.31,0.31
 2021-09-26,Friuli Venezia Giulia,0.29,0.31
-2021-09-26,Lazio,0.23,0.23
+2021-09-26,Lazio,0.22,0.23
 2021-09-26,Liguria,0.22,0.22
 2021-09-26,Lombardia,0.16,0.16
 2021-09-26,Marche,0.23,0.26
@@ -15,8 +15,8 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2021-09-26,Puglia,0.15,0.15
 2021-09-26,Sardegna,0.13,0.14
 2021-09-26,Sicilia,0.55,0.57
-2021-09-26,Toscana,0.35,0.38
+2021-09-26,Toscana,0.35,0.37
 2021-09-26,Umbria,0.25,0.27
-2021-09-26,Veneto,0.38,0.39
+2021-09-26,Veneto,0.38,0.38
 2021-09-26,Italia,0.27,0.28
 NA,Molise,NA,0.09
