@@ -11,6 +11,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2021-10-02,Marche,0.2,0.21
 2021-10-02,Molise,0.04,0.04
 2021-10-02,P.A. Bolzano,0.57,0.57
+2021-10-02,P.A. Trento,0.22,0.19
 2021-10-02,Piemonte,0.19,0.2
 2021-10-02,Puglia,0.13,0.14
 2021-10-02,Sardegna,0.13,0.13
@@ -20,4 +21,3 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2021-10-02,Valle d'Aosta,0.25,0.24
 2021-10-02,Veneto,0.32,0.31
 2021-10-02,Italia,0.23,0.24
-NA,P.A. Trento,NA,0.19
