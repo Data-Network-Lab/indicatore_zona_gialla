@@ -1,20 +1,19 @@
 data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
-2021-11-01,Abruzzo,0.29,0.28
-2021-11-01,Basilicata,0.14,0.14
-2021-11-01,Calabria,0.37,0.39
-2021-11-01,Campania,0.43,0.42
-2021-11-01,Emilia-Romagna,0.31,0.31
-2021-11-01,Lazio,0.33,0.33
-2021-11-01,Liguria,0.27,0.26
-2021-11-01,Lombardia,0.16,0.16
-2021-11-01,Marche,0.28,0.28
-2021-11-01,P.A. Trento,0.37,0.37
-2021-11-01,Piemonte,0.22,0.22
-2021-11-01,Sicilia,0.35,0.37
-2021-11-01,Toscana,0.28,0.29
-2021-11-01,Umbria,0.3,0.3
-2021-11-01,Veneto,0.4,0.38
-2021-11-01,Italia,0.3,0.29
-NA,Friuli Venezia Giulia,NA,0.77
-NA,Sardegna,NA,0.07
-NA,Valle d'Aosta,NA,0.18
+2021-11-02,Abruzzo,0.26,0.29
+2021-11-02,Basilicata,0.14,0.14
+2021-11-02,Calabria,0.35,0.37
+2021-11-02,Campania,0.42,0.43
+2021-11-02,Emilia-Romagna,0.32,0.31
+2021-11-02,Lazio,0.33,0.33
+2021-11-02,Liguria,0.27,0.27
+2021-11-02,Lombardia,0.15,0.16
+2021-11-02,Marche,0.25,0.28
+2021-11-02,Molise,0.09,0.09
+2021-11-02,P.A. Trento,0.33,0.37
+2021-11-02,Piemonte,0.21,0.22
+2021-11-02,Puglia,0.17,0.19
+2021-11-02,Sicilia,0.33,0.35
+2021-11-02,Toscana,0.28,0.28
+2021-11-02,Umbria,0.25,0.3
+2021-11-02,Veneto,0.38,0.4
+2021-11-02,Italia,0.28,0.3
