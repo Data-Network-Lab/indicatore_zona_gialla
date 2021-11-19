@@ -13,7 +13,7 @@ on:
 jobs: 
   etl:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     # Load repo and install R
     steps:
