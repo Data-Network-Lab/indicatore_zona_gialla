@@ -1,22 +1,23 @@
 denominazione_regione,indicatore_stress
-Abruzzo,0.55
+Abruzzo,0.56
 Basilicata,0.17
 Calabria,0.42
-Campania,0.62
-Emilia-Romagna,0.68
-Friuli Venezia Giulia,1.8
-Lazio,0.62
+Campania,0.63
+Emilia-Romagna,0.72
+Friuli Venezia Giulia,1.76
+Lazio,0.67
 Liguria,0.7
 Lombardia,0.51
 Marche,0.75
-P.A. Bolzano,2.92
-P.A. Trento,0.74
-Piemonte,0.47
-Puglia,0.2
+Molise,0.27
+P.A. Bolzano,2.93
+P.A. Trento,0.78
+Piemonte,0.49
+Puglia,0.19
 Sardegna,0.24
-Sicilia,0.53
+Sicilia,0.54
 Toscana,0.36
-Umbria,0.35
-Valle d'Aosta,1.39
-Veneto,1.09
-Italia,0.6
+Umbria,0.34
+Valle d'Aosta,1.41
+Veneto,1.11
+Italia,0.61
