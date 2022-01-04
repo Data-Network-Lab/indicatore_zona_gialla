@@ -383,7 +383,8 @@ tryCatch(
   {
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
-      mutate(week = week(data)) %>%
+      mutate(week = week(data),
+            year = year(data)) %>%
       ## dev choice to start from April, 1st 2021
       filter(between(data, left = ymd("2021-07-05"), right = today())) %>%
       group_by(week, denominazione_regione) %>%
@@ -392,7 +393,7 @@ tryCatch(
       pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
       mutate(
         across(where(is.numeric), round, digits = 2),
-        week = as.Date(paste("2021", week, 1, sep = "-"), format = "%Y-%U-%u")
+        week = as.Date(paste(year, week, 1, sep = "-"), format = "%Y-%U-%u")
              ) %>%
       ungroup() %>%
       filter(row_number() < n()) %>% 
