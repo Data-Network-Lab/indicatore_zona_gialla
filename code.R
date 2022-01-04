@@ -387,7 +387,7 @@ tryCatch(
             year = year(data)) %>%
       ## dev choice to start from April, 1st 2021
       filter(between(data, left = ymd("2021-07-05"), right = today())) %>%
-      group_by(week, denominazione_regione) %>%
+      group_by(week, year, denominazione_regione) %>%
       summarise(media_indicatore_stress = mean(indicatore_stress)) %>%
       drop_na() %>%
       pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
