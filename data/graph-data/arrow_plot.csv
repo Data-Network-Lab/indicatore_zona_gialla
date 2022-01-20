@@ -2,7 +2,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-01-18,Abruzzo,9.58,9.6
 2022-01-18,Basilicata,5.22,4.64
 2022-01-18,Calabria,5.77,5.57
-2022-01-18,Campania,13.71,14.61
+2022-01-18,Campania,13.71,14.53
 2022-01-18,Emilia-Romagna,12.85,13.19
 2022-01-18,Friuli Venezia Giulia,11.53,11.31
 2022-01-18,Lazio,6.38,6.37
@@ -10,13 +10,13 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-01-18,Lombardia,9.7,10.08
 2022-01-18,Marche,9.97,7.95
 2022-01-18,Molise,6.11,6.3
-2022-01-18,P.A. Bolzano,20.2,18.83
+2022-01-18,P.A. Bolzano,20.08,18.83
 2022-01-18,P.A. Trento,14.15,13.94
 2022-01-18,Piemonte,11.51,11.57
 2022-01-18,Puglia,11.84,9.53
 2022-01-18,Sardegna,2.53,2.63
-2022-01-18,Sicilia,8.03,8.6
-2022-01-18,Toscana,9.38,9.59
+2022-01-18,Sicilia,7.98,8.6
+2022-01-18,Toscana,9.38,9.55
 2022-01-18,Umbria,7.55,7.95
 2022-01-18,Valle d'Aosta,15.69,16.46
 2022-01-18,Veneto,12.4,12.08
