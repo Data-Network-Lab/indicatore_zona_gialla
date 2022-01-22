@@ -4,7 +4,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-01-20,Calabria,5.52,5.65
 2022-01-20,Campania,11.87,12.67
 2022-01-20,Emilia-Romagna,12.89,13
-2022-01-20,Friuli Venezia Giulia,12.32,11.87
+2022-01-20,Friuli Venezia Giulia,12.32,11.81
 2022-01-20,Lazio,6.78,6.54
 2022-01-20,Liguria,12.46,12.15
 2022-01-20,Lombardia,9.23,9.49
@@ -14,7 +14,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-01-20,P.A. Trento,14.71,14.43
 2022-01-20,Piemonte,11.3,11.23
 2022-01-20,Puglia,14.93,13.37
-2022-01-20,Sardegna,3.03,3.01
+2022-01-20,Sardegna,3.05,3.02
 2022-01-20,Sicilia,6.92,7.37
 2022-01-20,Toscana,9.23,9.21
 2022-01-20,Umbria,7.37,7.37
