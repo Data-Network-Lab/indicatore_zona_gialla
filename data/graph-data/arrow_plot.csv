@@ -4,7 +4,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-02-13,Calabria,3.2,3.34
 2022-02-13,Campania,4.24,4.44
 2022-02-13,Emilia-Romagna,3.5,3.81
-2022-02-13,Friuli Venezia Giulia,4.4,4.59
+2022-02-13,Friuli Venezia Giulia,4.38,4.59
 2022-02-13,Lazio,3.55,3.74
 2022-02-13,Liguria,3.63,3.83
 2022-02-13,Lombardia,2.04,2.17
@@ -16,8 +16,8 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-02-13,Puglia,3.47,3.6
 2022-02-13,Sardegna,4.26,4.62
 2022-02-13,Sicilia,4.91,5.18
-2022-02-13,Toscana,3.15,3.41
+2022-02-13,Toscana,3.15,3.4
 2022-02-13,Umbria,3.77,3.99
 2022-02-13,Valle d'Aosta,2.49,2.72
-2022-02-13,Veneto,4.24,4.54
+2022-02-13,Veneto,4.24,4.52
 2022-02-13,Italia,3.57,3.78
