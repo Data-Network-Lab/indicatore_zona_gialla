@@ -1,6 +1,6 @@
 data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-04-22,Abruzzo,4.51,4.3
-2022-04-22,Basilicata,3.65,3.49
+2022-04-22,Basilicata,3.65,3.48
 2022-04-22,Calabria,3.28,3.13
 2022-04-22,Campania,3.86,3.68
 2022-04-22,Emilia-Romagna,2.49,2.42
@@ -13,7 +13,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-04-22,P.A. Bolzano,2.91,2.95
 2022-04-22,P.A. Trento,2.02,1.97
 2022-04-22,Piemonte,2.17,2.11
-2022-04-22,Puglia,2.92,2.81
+2022-04-22,Puglia,2.92,2.8
 2022-04-22,Sardegna,2.84,2.75
 2022-04-22,Sicilia,3.21,3.09
 2022-04-22,Toscana,2.34,2.3
