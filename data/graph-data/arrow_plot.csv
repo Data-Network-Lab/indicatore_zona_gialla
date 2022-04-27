@@ -1,23 +1,15 @@
 data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
-2022-04-24,Abruzzo,4.81,4.73
-2022-04-24,Calabria,3.56,3.4
-2022-04-24,Campania,4.03,3.95
-2022-04-24,Emilia-Romagna,2.57,2.52
-2022-04-24,Lazio,2.75,2.76
-2022-04-24,Lombardia,1.88,1.89
-2022-04-24,Marche,3.75,3.7
-2022-04-24,Piemonte,2.28,2.22
-2022-04-24,Puglia,3.06,2.99
-2022-04-24,Sardegna,2.93,2.9
-2022-04-24,Sicilia,3.29,3.24
-2022-04-24,Toscana,2.37,2.37
-2022-04-24,Veneto,3.43,3.42
-2022-04-24,Italia,2.87,2.84
-NA,Basilicata,NA,3.81
-NA,Friuli Venezia Giulia,NA,2.35
-NA,Liguria,NA,2.64
-NA,Molise,NA,3.25
-NA,P.A. Bolzano,NA,2.81
-NA,P.A. Trento,NA,2.03
-NA,Umbria,NA,3.45
-NA,Valle d'Aosta,NA,2.64
+2022-04-25,Calabria,3.57,3.56
+2022-04-25,Campania,4.11,4.03
+2022-04-25,Emilia-Romagna,2.61,2.57
+2022-04-25,Lazio,2.8,2.75
+2022-04-25,Lombardia,1.91,1.88
+2022-04-25,Marche,3.78,3.75
+2022-04-25,Piemonte,2.31,2.28
+2022-04-25,Puglia,3.11,3.06
+2022-04-25,Sardegna,2.96,2.93
+2022-04-25,Sicilia,3.36,3.29
+2022-04-25,Toscana,2.44,2.37
+2022-04-25,Veneto,3.47,3.43
+2022-04-25,Italia,2.92,2.87
+NA,Abruzzo,NA,4.81
