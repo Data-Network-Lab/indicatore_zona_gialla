@@ -7,10 +7,10 @@ name: refresh_data
 #  On push for testin purpose
 on:
   schedule:
-    - cron:  '0 */6 * * *'
+    - cron:  '0 0 3 * *'
   push:
     branches:
-      - main
+      - from_week_to_month
 
 
 jobs: 

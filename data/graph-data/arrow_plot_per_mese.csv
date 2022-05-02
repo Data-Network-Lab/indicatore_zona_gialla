@@ -1,0 +1,23 @@
+data.x,denominazione_regione,indicatore_stress_t,data.y,indicatore_stress_t1,colour
+2022-04-29,Abruzzo,19.24,2022-03-30,15.86,decreasing
+2022-04-29,Basilicata,16,2022-03-30,17.09,increasing
+2022-04-29,Calabria,15.46,2022-03-30,19.35,increasing
+2022-04-29,Campania,16.45,2022-03-30,14.88,decreasing
+2022-04-29,Emilia-Romagna,11.24,2022-03-30,7.9,decreasing
+2022-04-29,Friuli Venezia Giulia,10.84,2022-03-30,9.42,decreasing
+2022-04-29,Lazio,12.52,2022-03-30,12.76,increasing
+2022-04-29,Liguria,10.86,2022-03-30,10.19,decreasing
+2022-04-29,Lombardia,8.43,2022-03-30,7.21,decreasing
+2022-04-29,Marche,16.51,2022-03-30,18.49,increasing
+2022-04-29,Molise,13.72,2022-03-30,12,decreasing
+2022-04-29,P.A. Bolzano,12.81,2022-03-30,9.27,decreasing
+2022-04-29,P.A. Trento,9.06,2022-03-30,7.96,decreasing
+2022-04-29,Piemonte,9.27,2022-03-30,6.86,decreasing
+2022-04-29,Puglia,13.32,2022-03-30,15.6,increasing
+2022-04-29,Sardegna,12.04,2022-03-30,12.61,increasing
+2022-04-29,Sicilia,14,2022-03-30,18.24,increasing
+2022-04-29,Toscana,10.75,2022-03-30,11.53,increasing
+2022-04-29,Umbria,15.36,2022-03-30,21.6,increasing
+2022-04-29,Valle d'Aosta,9.84,2022-03-30,4.72,decreasing
+2022-04-29,Veneto,15.57,2022-03-30,13.39,decreasing
+2022-04-29,Italia,12.48,2022-03-30,12.2,decreasing

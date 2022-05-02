@@ -77,7 +77,7 @@ tryCatch(
 
 
 ## params
-delta <- 7
+delta <- 30
 efficacia <- 0.95
 
 
@@ -127,7 +127,7 @@ tryCatch(
 
 tryCatch(
   {
-    incidenza_per_settimana <- incidenza_prepped %>%
+    incidenza_per_mese <- incidenza_prepped %>%
       split(incidenza_prepped$data) %>% 
       map_df(~ add_row(.x,
                        data = .x$data[1],
@@ -192,7 +192,7 @@ tryCatch(
   {
     withCallingHandlers(
       {
-        vaccini_per_settimana <- vaccini_prepped %>%
+        vaccini_per_mese <- vaccini_prepped %>%
           split(vaccini_prepped$data) %>% 
           map_df(~ add_row(.x,
                            data = .x$data[1],
@@ -223,10 +223,10 @@ tryCatch(
   {
     withCallingHandlers(
       {
-        output <- incidenza_per_settimana %>%
+        output <- incidenza_per_mese %>%
           left_join(static_data) %>%
           ## moved to right join
-          right_join(vaccini_per_settimana) %>%
+          right_join(vaccini_per_mese) %>%
           mutate(
             incidenza = incremento / (popolazione / 100000),
             saturazione_ti = terapia_intensiva / PL_terapia_intensiva,
