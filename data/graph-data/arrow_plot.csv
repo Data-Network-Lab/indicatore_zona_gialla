@@ -1,23 +1,22 @@
 data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
-2022-04-30,Abruzzo,4.41,4.68
-2022-04-30,Basilicata,3.49,3.68
-2022-04-30,Calabria,3.15,3.35
-2022-04-30,Campania,3.63,3.8
-2022-04-30,Emilia-Romagna,2.57,2.61
-2022-04-30,Friuli Venezia Giulia,2.2,2.28
-2022-04-30,Lazio,2.39,2.49
-2022-04-30,Liguria,2.23,2.31
-2022-04-30,Lombardia,1.74,1.79
-2022-04-30,Marche,3.49,3.64
-2022-04-30,Molise,3.24,3.45
-2022-04-30,P.A. Bolzano,2.3,2.32
-2022-04-30,P.A. Trento,2.01,2.04
-2022-04-30,Piemonte,2.12,2.22
-2022-04-30,Puglia,2.67,2.83
-2022-04-30,Sardegna,2.62,2.68
-2022-04-30,Sicilia,2.85,3.04
-2022-04-30,Toscana,2.05,2.18
-2022-04-30,Umbria,3.06,3.28
-2022-04-30,Veneto,3.22,3.35
-2022-04-30,Italia,2.6,2.72
-NA,Valle d'Aosta,NA,2.28
+2022-05-01,Basilicata,3.37,3.49
+2022-05-01,Calabria,2.93,3.15
+2022-05-01,Campania,3.43,3.63
+2022-05-01,Emilia-Romagna,2.45,2.57
+2022-05-01,Lazio,2.28,2.39
+2022-05-01,Lombardia,1.71,1.74
+2022-05-01,Marche,3.36,3.49
+2022-05-01,Piemonte,2.06,2.12
+2022-05-01,Puglia,2.51,2.67
+2022-05-01,Sicilia,2.75,2.85
+2022-05-01,Veneto,3.16,3.22
+2022-05-01,Italia,2.5,2.6
+NA,Abruzzo,NA,4.41
+NA,Friuli Venezia Giulia,NA,2.2
+NA,Liguria,NA,2.23
+NA,Molise,NA,3.24
+NA,P.A. Bolzano,NA,2.3
+NA,P.A. Trento,NA,2.01
+NA,Sardegna,NA,2.62
+NA,Toscana,NA,2.05
+NA,Umbria,NA,3.06
