@@ -9,6 +9,7 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-05-05,Liguria,2.02,2.07
 2022-05-05,Lombardia,1.61,1.69
 2022-05-05,Marche,3.01,3.16
+2022-05-05,Molise,2.81,3.06
 2022-05-05,P.A. Bolzano,2.19,2.25
 2022-05-05,P.A. Trento,1.8,1.88
 2022-05-05,Piemonte,1.84,1.92
@@ -20,4 +21,3 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-05-05,Valle d'Aosta,2.05,2.1
 2022-05-05,Veneto,2.85,2.99
 2022-05-05,Italia,2.26,2.4
-NA,Molise,NA,3.06
