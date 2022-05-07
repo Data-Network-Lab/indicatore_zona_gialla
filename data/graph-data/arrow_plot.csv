@@ -1,23 +1,23 @@
 data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
-2022-05-04,Abruzzo,4.91,4.41
-2022-05-04,Basilicata,3.07,3.52
-2022-05-04,Calabria,2.84,3.2
-2022-05-04,Campania,3.17,3.61
-2022-05-04,Emilia-Romagna,2.51,2.39
-2022-05-04,Friuli Venezia Giulia,2.25,2.48
-2022-05-04,Lazio,2.08,2.33
-2022-05-04,Liguria,2.07,2.33
-2022-05-04,Lombardia,1.69,1.94
-2022-05-04,Marche,3.16,3.61
-2022-05-04,Molise,3.06,3.25
-2022-05-04,P.A. Bolzano,2.25,2.57
-2022-05-04,P.A. Trento,1.88,2.08
-2022-05-04,Piemonte,1.92,2.27
-2022-05-04,Puglia,2.24,2.68
-2022-05-04,Sardegna,2.52,2.85
-2022-05-04,Sicilia,2.62,2.95
-2022-05-04,Toscana,1.83,2.12
-2022-05-04,Umbria,3,3.11
-2022-05-04,Valle d'Aosta,2.1,2.36
-2022-05-04,Veneto,2.99,3.44
-2022-05-04,Italia,2.4,2.68
+2022-05-05,Abruzzo,3.72,4.91
+2022-05-05,Basilicata,2.86,3.07
+2022-05-05,Calabria,2.72,2.84
+2022-05-05,Campania,3,3.17
+2022-05-05,Emilia-Romagna,2.34,2.51
+2022-05-05,Friuli Venezia Giulia,2.08,2.25
+2022-05-05,Lazio,1.93,2.08
+2022-05-05,Liguria,2.02,2.07
+2022-05-05,Lombardia,1.61,1.69
+2022-05-05,Marche,3.01,3.16
+2022-05-05,P.A. Bolzano,2.19,2.25
+2022-05-05,P.A. Trento,1.8,1.88
+2022-05-05,Piemonte,1.84,1.92
+2022-05-05,Puglia,2.21,2.24
+2022-05-05,Sardegna,2.37,2.52
+2022-05-05,Sicilia,2.48,2.62
+2022-05-05,Toscana,1.73,1.83
+2022-05-05,Umbria,2.68,3
+2022-05-05,Valle d'Aosta,2.05,2.1
+2022-05-05,Veneto,2.85,2.99
+2022-05-05,Italia,2.26,2.4
+NA,Molise,NA,3.06
