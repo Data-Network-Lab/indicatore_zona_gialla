@@ -366,7 +366,7 @@ tryCatch(
       
     
     right_join(indicatore_t, indicatore_t1, by = "denominazione_regione") %>%
-      mutate(colour  = ifelse(indicatore_stress_t <= indicatore_stress_t1, yes = "decreasing", no = "increasing" )) %>%  View()
+      mutate(colour  = ifelse(indicatore_stress_t <= indicatore_stress_t1, yes = "decreasing", no = "increasing" )) %>%
       write_csv(
         file = here("data","graph-data", "arrow_plot_per_mese.csv")
       )
