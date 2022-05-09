@@ -1,22 +1,23 @@
 data.x,denominazione_regione,indicatore_stress_t,data.y,indicatore_stress_t1,colour
-2022-05-06,Abruzzo,4.56,2022-04-06,4.53,decreasing
-2022-05-06,Basilicata,3.63,2022-04-06,4.69,decreasing
-2022-05-06,Calabria,3.45,2022-04-06,5.17,decreasing
-2022-05-06,Campania,3.81,2022-04-06,4.25,decreasing
-2022-05-06,Emilia-Romagna,2.69,2022-04-06,2.31,decreasing
-2022-05-06,Friuli Venezia Giulia,2.54,2022-04-06,2.67,decreasing
-2022-05-06,Lazio,2.73,2022-04-06,3.64,decreasing
-2022-05-06,Liguria,2.58,2022-04-06,2.73,decreasing
-2022-05-06,Lombardia,1.97,2022-04-06,2.05,decreasing
-2022-05-06,Marche,3.78,2022-04-06,4.97,decreasing
-2022-05-06,Molise,3.3,2022-04-06,3.23,decreasing
-2022-05-06,P.A. Bolzano,2.85,2022-04-06,2.45,decreasing
-2022-05-06,P.A. Trento,2.16,2022-04-06,2.16,decreasing
-2022-05-06,Piemonte,2.25,2022-04-06,1.92,decreasing
-2022-05-06,Puglia,2.92,2022-04-06,4.3,decreasing
-2022-05-06,Sardegna,2.87,2022-04-06,3.37,decreasing
-2022-05-06,Sicilia,3.16,2022-04-06,4.71,decreasing
-2022-05-06,Toscana,2.36,2022-04-06,3.18,decreasing
-2022-05-06,Umbria,3.44,2022-04-06,5.71,decreasing
-2022-05-06,Veneto,3.6,2022-04-06,3.79,decreasing
-2022-05-06,Italia,2.87,2022-04-06,3.38,decreasing
+2022-05-05,Abruzzo,4.59,2022-04-05,4.41,increasing
+2022-05-05,Basilicata,3.67,2022-04-05,4.62,decreasing
+2022-05-05,Calabria,3.49,2022-04-05,5.12,decreasing
+2022-05-05,Campania,3.86,2022-04-05,4.15,decreasing
+2022-05-05,Emilia-Romagna,2.74,2022-04-05,2.23,increasing
+2022-05-05,Friuli Venezia Giulia,2.57,2022-04-05,2.59,decreasing
+2022-05-05,Lazio,2.79,2022-04-05,3.55,decreasing
+2022-05-05,Liguria,2.61,2022-04-05,2.68,decreasing
+2022-05-05,Lombardia,2.01,2022-04-05,1.98,increasing
+2022-05-05,Marche,3.81,2022-04-05,4.88,decreasing
+2022-05-05,Molise,3.32,2022-04-05,3.15,increasing
+2022-05-05,P.A. Bolzano,2.9,2022-04-05,2.39,increasing
+2022-05-05,P.A. Trento,2.2,2022-04-05,2.09,increasing
+2022-05-05,Piemonte,2.27,2022-04-05,1.87,increasing
+2022-05-05,Puglia,2.98,2022-04-05,4.21,decreasing
+2022-05-05,Sardegna,2.92,2022-04-05,3.3,decreasing
+2022-05-05,Sicilia,3.21,2022-04-05,4.66,decreasing
+2022-05-05,Toscana,2.42,2022-04-05,3.12,decreasing
+2022-05-05,Umbria,3.5,2022-04-05,5.6,decreasing
+2022-05-05,Valle d'Aosta,2.5,2022-04-05,1.31,increasing
+2022-05-05,Veneto,3.65,2022-04-05,3.67,decreasing
+2022-05-05,Italia,2.91,2022-04-05,3.3,decreasing
