@@ -246,7 +246,7 @@ tryCatch(
             soglia_50_equivalente = round(50 * moltiplicatore_vaccini, 0),
             soglia_150_equivalente = round(150 * moltiplicatore_vaccini, 0),
             soglia_250_equivalente = round(250 * moltiplicatore_vaccini, 0),
-            indicatore_stress = (incidenza) / soglia_50_equivalente
+            indicatore_stress = ((incidenza) / soglia_50_equivalente)/4
           ) %>%
           mutate(across(where(is.numeric), round, digits = 2))
         
@@ -299,7 +299,7 @@ tryCatch(
         "Indicatore di Stress" = indicatore_stress
       ) %>% 
       write_csv(
-        file = here("data", "graph-data", "tabella_semplice.csv")
+        file = here("data", "graph-data", "tabella_semplice_per_mese.csv")
       )
     log_info("write tabella_semplice success")
   },
@@ -316,7 +316,7 @@ tryCatch(
       filter(data == today()-2) %>% 
       select(denominazione_regione, indicatore_stress) %>%
       write_csv(
-        file = here("data", "graph-data", "mappa.csv")
+        file = here("data", "graph-data", "mappa_per_mese.csv")
       )
     log_info("write mappa success")
   },
@@ -343,7 +343,7 @@ tryCatch(
       rename("Vaccinati (%)" = vaccinati_perc,
              "Incidenza (100'000 abitanti)" = incidenza) %>% 
       write_csv(
-        file = here("data", "graph-data", "scatterplot.csv")
+        file = here("data", "graph-data", "scatterplot_per_mese.csv")
       )
     log_info("write scatterplot success")
   },
@@ -353,7 +353,32 @@ tryCatch(
 )
 
 
-## 6.4 Arrow Plot
+## 6.4 Indicatorei di stress Arrow Plot base mensile
+tryCatch(
+  {
+    indicatore_t <- output %>%
+      filter(data == today()-3) %>% 
+      select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) 
+    
+    indicatore_t1 <- output %>%
+      filter(data == today()-33) %>% 
+      select(data, denominazione_regione, indicatore_stress_t1 = indicatore_stress) 
+      
+    
+    right_join(indicatore_t, indicatore_t1, by = "denominazione_regione") %>%
+      mutate(colour  = ifelse(indicatore_stress_t <= indicatore_stress_t1, "decreasing", "decreasing")) %>%  
+      write_csv(
+        file = here("data","graph-data", "arrow_plot_per_mese.csv")
+      )
+    log_info("write arrow_plot success")
+  },
+  error = function(e) {
+    log_error(formatter_glue("message [something went wrong while writing arrowplot, error: \n {e}]"))
+  }
+)
+
+
+## 6.4.1  Arrow Plot
 tryCatch(
   {
     indicatore_t <- output %>%
@@ -363,7 +388,7 @@ tryCatch(
     indicatore_t1 <- output %>%
       filter(data == today()-3) %>% 
       select(denominazione_regione, indicatore_stress_t1 = indicatore_stress) 
-      
+    
     
     right_join(indicatore_t, indicatore_t1, by = "denominazione_regione") %>% 
       write_csv(
@@ -377,23 +402,26 @@ tryCatch(
 )
 
 
+
+
+
 ## 6.5 Time series (settimanale)
 
 tryCatch(
   {
     output %>%
       select(data, denominazione_regione, indicatore_stress) %>%
-      mutate(week = week(data),
+      mutate(month = month(data),
             year = year(data)) %>%
       ## dev choice to start from April, 1st 2021
       filter(between(data, left = ymd("2021-07-05"), right = today())) %>%
-      group_by(week, year, denominazione_regione) %>%
+      group_by(month, year, denominazione_regione) %>%
       summarise(media_indicatore_stress = mean(indicatore_stress)) %>%
       drop_na() %>%
       pivot_wider(names_from = denominazione_regione, values_from = media_indicatore_stress) %>%
       mutate(
         across(where(is.numeric), round, digits = 2),
-        week = as.Date(paste(year, week, 1, sep = "-"), format = "%Y-%U-%u")
+        month = as.Date(paste(year, month, 1, sep = "-"), format = "%Y-%U-%u")
              ) %>%
       ungroup() %>%
       filter(row_number() < n()) %>% 
