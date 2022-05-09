@@ -357,16 +357,16 @@ tryCatch(
 tryCatch(
   {
     indicatore_t <- output %>%
-      filter(data == today()-3) %>% 
+      filter(data == today()-4) %>% 
       select(data, denominazione_regione, indicatore_stress_t = indicatore_stress) 
     
     indicatore_t1 <- output %>%
-      filter(data == today()-33) %>% 
+      filter(data == today()-34) %>% 
       select(data, denominazione_regione, indicatore_stress_t1 = indicatore_stress) 
       
     
     right_join(indicatore_t, indicatore_t1, by = "denominazione_regione") %>%
-      mutate(colour  = ifelse(indicatore_stress_t <= indicatore_stress_t1, "decreasing", "decreasing")) %>%  
+      mutate(colour  = ifelse(indicatore_stress_t <= indicatore_stress_t1, yes = "decreasing", no = "increasing" )) %>%  View()
       write_csv(
         file = here("data","graph-data", "arrow_plot_per_mese.csv")
       )
