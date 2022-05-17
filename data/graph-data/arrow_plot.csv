@@ -12,9 +12,10 @@ data,denominazione_regione,indicatore_stress_t,indicatore_stress_t1
 2022-05-15,Sicilia,1.8,1.83
 2022-05-15,Toscana,1.34,1.34
 2022-05-15,Valle d'Aosta,1.78,1.74
-2022-05-15,Veneto,2.11,2.18
+2022-05-15,Veneto,2.11,2.17
 2022-05-15,Italia,1.75,1.77
 NA,Basilicata,NA,2.16
 NA,Friuli Venezia Giulia,NA,1.68
 NA,Liguria,NA,1.63
 NA,Molise,NA,2.25
+NA,Umbria,NA,2.17
